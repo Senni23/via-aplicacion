@@ -1,0 +1,68 @@
+<meta charset="utf-8"><link rel="stylesheet" href="app.css">
+<style>
+body{display:block;background:#0A0C10}
+.arq{ width:1560px; padding:26px 28px; background:#0A0C10; color:#fff;
+      font-family:'Atkinson Hyperlegible','DejaVu Sans',sans-serif; }
+.flow{ display:flex; align-items:stretch; gap:0; }
+.col{ flex:1; border:2px solid #39424F; border-radius:18px; padding:16px 16px 18px; background:#151A21; }
+.col .n{ font-size:12px; letter-spacing:1.6px; font-weight:700; text-transform:uppercase; }
+.col .ttl{ font-size:19px; font-weight:700; margin:6px 0 14px; line-height:1.2; }
+.it{ background:#1F2630; border:1px solid #39424F; border-radius:12px; padding:10px 12px; margin-bottom:9px; }
+.it b{ display:block; font-size:14.5px; margin-bottom:3px; }
+.it span{ display:block; font-size:12px; color:#B9C2CE; line-height:1.35; }
+.ar{ display:flex; align-items:center; justify-content:center; width:52px; flex:0 0 52px;
+     font-size:30px; color:#FFD400; font-weight:700; }
+.c1{ border-color:#FFD400 } .c1 .n{ color:#FFD400 }
+.c2{ border-color:#4DD0FF } .c2 .n{ color:#4DD0FF }
+.c3{ border-color:#5BE39A } .c3 .n{ color:#5BE39A }
+.c4{ border-color:#B9C2CE } .c4 .n{ color:#B9C2CE }
+.tit{ font-size:25px; font-weight:700; margin-bottom:6px; }
+.sub{ font-size:15px; color:#B9C2CE; margin-bottom:20px; }
+</style>
+<div class="arq">
+  <div class="tit">Arquitectura funcional de VÍA</div>
+  <div class="sub">Cuatro capas · el usuario nunca ve la complejidad, solo escucha el resultado</div>
+
+  <div class="flow">
+    <div class="col c1">
+      <div class="n">Capa 1</div>
+      <div class="ttl">Entrada multimodal</div>
+      <div class="it"><b>🎙️ Voz</b><span>Comandos naturales en español peruano (ASR)</span></div>
+      <div class="it"><b>👆 Gestos</b><span>Deslizar y doble toque, áreas táctiles ≥ 44 px</span></div>
+      <div class="it"><b>📷 Cámara</b><span>Documentos, objetos, billetes y entorno</span></div>
+      <div class="it"><b>🌐 URL o archivo</b><span>Web, PDF, Word o correo compartido</span></div>
+    </div>
+
+    <div class="ar">▶</div>
+
+    <div class="col c2">
+      <div class="n">Capa 2</div>
+      <div class="ttl">Motor de procesamiento</div>
+      <div class="it"><b>Analizador WCAG 2.2</b><span>Detecta contraste insuficiente, alt faltantes, campos sin etiqueta y orden de foco</span></div>
+      <div class="it"><b>Visión por computador</b><span>OCR de documentos + descripción automática de imágenes</span></div>
+      <div class="it"><b>Simplificador semántico</b><span>Reconstruye la jerarquía de encabezados y reescribe en lenguaje claro</span></div>
+    </div>
+
+    <div class="ar">▶</div>
+
+    <div class="col c3">
+      <div class="n">Capa 3</div>
+      <div class="ttl">Adaptación al perfil</div>
+      <div class="it"><b>Ceguera total</b><span>Salida 100 % auditiva y navegación por voz</span></div>
+      <div class="it"><b>Baja visión</b><span>Texto 200–400 % y contraste ≥ 7:1</span></div>
+      <div class="it"><b>Daltonismo</b><span>Paletas seguras y etiquetas de color</span></div>
+      <div class="it"><b>Fallback humano</b><span>Voluntario por videollamada en menos de 30 s</span></div>
+    </div>
+
+    <div class="ar">▶</div>
+
+    <div class="col c4">
+      <div class="n">Capa 4</div>
+      <div class="ttl">Salida accesible</div>
+      <div class="it"><b>🔊 Voz sintetizada</b><span>TTS es-PE, velocidad de 0.5× a 3×</span></div>
+      <div class="it"><b>📱 Alto contraste</b><span>Negro sobre amarillo, 15.8:1</span></div>
+      <div class="it"><b>⠿ Línea braille</b><span>Compatible por Bluetooth</span></div>
+      <div class="it"><b>📳 Háptica</b><span>Confirma cada acción sin necesidad de mirar</span></div>
+    </div>
+  </div>
+</div>

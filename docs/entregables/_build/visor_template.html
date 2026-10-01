@@ -1,0 +1,299 @@
+<title>Código fuente de VÍA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/dart.min.js"></script>
+<style>
+/* Layout: panel fijo de archivos (agrupados por capa) a la izquierda +
+   panel de código con encabezado fijo a la derecha. Tema único oscuro,
+   deliberado: imita un editor de código, el mismo mundo visual del
+   contenido que muestra. */
+:root{
+  --bg:#0B0F14; --panel:#10151C; --surface:#151A21; --surface2:#1B222B;
+  --border:#262E38; --text:#E6EDF3; --muted:#8B95A3; --faint:#5B6472;
+  --accent:#E8B339; --accent-ink:#1A1402; --info:#5AC8FA; --ok:#5BE39A; --err:#FF8080;
+  --font-ui:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --font-code:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+  color-scheme: dark;
+  --hl-kw:#E8B339; --hl-str:#8FD08A; --hl-com:#5B6472; --hl-type:#5AC8FA; --hl-num:#D29CFF; --hl-fn:#79C0FF; --hl-title:#E6EDF3;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font-ui)}
+.app{display:flex; height:100vh; max-height:100vh; overflow:hidden}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:300px; min-width:300px; max-width:300px;
+  background:var(--panel); border-right:1px solid var(--border);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.sidebar-head{padding:18px 16px 14px; border-bottom:1px solid var(--border)}
+.marca{display:flex; align-items:center; gap:10px; margin-bottom:12px}
+.logo{width:30px;height:30px;border-radius:8px;background:var(--accent);color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex:none}
+.marca-texto .nombre{font-weight:600; font-size:14.5px; line-height:1.2}
+.marca-texto .sub{font-size:11.5px; color:var(--muted)}
+.stats{display:flex; gap:8px; margin-bottom:12px}
+.stat{flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:7px 8px}
+.stat b{display:block; font-size:16px; font-variant-numeric:tabular-nums}
+.stat span{font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em}
+.buscar{position:relative}
+.buscar input{
+  width:100%; background:var(--surface); border:1px solid var(--border); border-radius:8px;
+  color:var(--text); font:13px var(--font-ui); padding:8px 10px 8px 30px; outline:none;
+}
+.buscar input:focus{border-color:var(--accent)}
+.buscar svg{position:absolute; left:9px; top:50%; transform:translateY(-50%); opacity:.5; pointer-events:none}
+
+.arbol{flex:1; overflow-y:auto; padding:8px 8px 16px; min-width:0}
+.grupo{margin-bottom:4px}
+.grupo-titulo{
+  display:flex; align-items:center; gap:6px; width:100%; background:none; border:none; cursor:pointer;
+  color:var(--muted); font:600 11px var(--font-ui); text-transform:uppercase; letter-spacing:.06em;
+  padding:8px 8px; border-radius:6px; text-align:left;
+}
+.grupo-titulo:hover{background:var(--surface)}
+.grupo-titulo .chev{transition:transform .15s; opacity:.6}
+.grupo-titulo[aria-expanded="false"] .chev{transform:rotate(-90deg)}
+.grupo-count{margin-left:auto; font-variant-numeric:tabular-nums; opacity:.7}
+.lista-archivos{list-style:none; margin:0; padding:0 0 4px}
+.lista-archivos[hidden]{display:none}
+.item-archivo{margin:0}
+.item-archivo button{
+  width:100%; display:block; text-align:left; background:none; border:none; cursor:pointer;
+  color:var(--text); font:13px var(--font-code); padding:6px 10px 6px 26px; border-radius:6px;
+  border-left:2px solid transparent; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.item-archivo button:hover{background:var(--surface)}
+.item-archivo button.activo{background:var(--surface2); border-left-color:var(--accent); color:var(--accent)}
+.item-archivo .ln{display:block; font:10.5px var(--font-ui); color:var(--faint); padding:0 10px 0 26px; margin-top:-4px}
+
+/* ---------- Panel de código ---------- */
+.panel{flex:1; min-width:0; display:flex; flex-direction:column; overflow:hidden}
+.panel-head{
+  padding:16px 28px; border-bottom:1px solid var(--border); background:var(--bg);
+  flex:none;
+}
+.ruta{font:600 13.5px var(--font-code); color:var(--text); display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.ruta .sep{color:var(--faint); font-weight:400}
+.badge-capa{
+  font:700 10px var(--font-ui); text-transform:uppercase; letter-spacing:.05em;
+  padding:2px 7px; border-radius:999px; background:var(--surface2); color:var(--muted); border:1px solid var(--border);
+}
+.proposito{margin-top:8px; color:var(--muted); font-size:13.5px; line-height:1.5; max-width:72ch}
+.meta-fila{margin-top:10px; display:flex; gap:14px; font-size:12px; color:var(--faint)}
+.copiar{
+  margin-top:10px; display:inline-flex; align-items:center; gap:6px; background:var(--surface);
+  border:1px solid var(--border); color:var(--text); font:12.5px var(--font-ui); padding:6px 11px;
+  border-radius:7px; cursor:pointer;
+}
+.copiar:hover{border-color:var(--accent)}
+.copiar.ok{color:var(--ok); border-color:var(--ok)}
+
+.code-scroll{flex:1; overflow:auto; min-width:0}
+pre.codigo{margin:0; padding:22px 28px 60px}
+pre.codigo code.hljs{
+  background:transparent !important; font:13.5px/1.65 var(--font-code); white-space:pre; display:block;
+}
+
+.hljs-keyword,.hljs-literal,.hljs-built_in{color:var(--hl-kw)}
+.hljs-string{color:var(--hl-str)}
+.hljs-comment,.hljs-doctag{color:var(--hl-com); font-style:italic}
+.hljs-title.class_,.hljs-type,.hljs-title.class_.inherited__{color:var(--hl-type)}
+.hljs-number{color:var(--hl-num)}
+.hljs-title.function_{color:var(--hl-fn)}
+.hljs-variable,.hljs-params,.hljs-attr{color:var(--text)}
+.hljs-meta{color:var(--hl-com)}
+.hljs-symbol,.hljs-subst{color:var(--hl-title)}
+
+.vacio{display:flex; align-items:center; justify-content:center; height:100%; color:var(--muted); font-size:14px}
+
+/* responsive: a menos de 760px, el panel de archivos se vuelve un cajón
+   deslizable en vez de columna fija */
+.abrir-sidebar{display:none}
+@media (max-width:760px){
+  .sidebar{
+    position:fixed; z-index:20; top:0; left:0; bottom:0; transform:translateX(-100%);
+    transition:transform .2s ease; box-shadow:4px 0 24px rgba(0,0,0,.4);
+  }
+  .sidebar.abierto{transform:translateX(0)}
+  .abrir-sidebar{
+    display:flex; align-items:center; gap:6px; position:fixed; z-index:10; top:10px; left:10px;
+    background:var(--surface); border:1px solid var(--border); color:var(--text); font:12.5px var(--font-ui);
+    padding:7px 12px; border-radius:8px; cursor:pointer;
+  }
+  .panel-head{padding-top:50px}
+  .panel-head, .code-scroll{padding-left:0}
+  pre.codigo{padding-left:16px; padding-right:16px}
+  .ruta{font-size:12px}
+}
+::-webkit-scrollbar{width:10px; height:10px}
+::-webkit-scrollbar-thumb{background:var(--surface2); border-radius:6px}
+::-webkit-scrollbar-track{background:transparent}
+</style>
+
+<button class="abrir-sidebar" id="btnAbrir" aria-label="Abrir lista de archivos">☰ Archivos</button>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="marca">
+        <div class="logo">V</div>
+        <div class="marca-texto">
+          <div class="nombre">Código fuente de VÍA</div>
+          <div class="sub">Para sustentar el trabajo</div>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="buscar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="buscarInput" type="text" placeholder="Buscar archivo…" autocomplete="off">
+      </div>
+    </div>
+    <nav class="arbol" id="arbol"></nav>
+  </aside>
+
+  <main class="panel">
+    <div class="panel-head" id="panelHead"></div>
+    <div class="code-scroll" id="codeScroll">
+      <div class="vacio">Elige un archivo de la izquierda</div>
+    </div>
+  </main>
+</div>
+
+<script>
+const DATA = __DATA__;
+
+const NOMBRES_CAPA = {
+  'raíz': 'main.dart',
+  core: 'core/ — tema, voz+vibración, comandos',
+  data: 'data/ — modelos y servicios',
+  features: 'features/ — las 6 pantallas',
+  shared: 'shared/ — widgets reutilizables',
+};
+const ORDEN_CAPA = ['raíz','core','data','features','shared'];
+
+let archivoActivo = null;
+
+function agrupar(archivos){
+  const grupos = {};
+  for(const a of archivos){ (grupos[a.capa] ||= []).push(a); }
+  return grupos;
+}
+
+function render(filtro){
+  const arbol = document.getElementById('arbol');
+  arbol.innerHTML = '';
+  const q = (filtro||'').trim().toLowerCase();
+  const filtrados = q ? DATA.archivos.filter(a => a.ruta.toLowerCase().includes(q)) : DATA.archivos;
+  const grupos = agrupar(filtrados);
+
+  for(const capa of ORDEN_CAPA){
+    const lista = grupos[capa];
+    if(!lista || !lista.length) continue;
+    const grupoEl = document.createElement('div');
+    grupoEl.className = 'grupo';
+
+    const btn = document.createElement('button');
+    btn.className = 'grupo-titulo';
+    btn.setAttribute('aria-expanded','true');
+    btn.innerHTML = `<svg class="chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg><span>${NOMBRES_CAPA[capa]||capa}</span><span class="grupo-count">${lista.length}</span>`;
+
+    const ul = document.createElement('ul');
+    ul.className = 'lista-archivos';
+    for(const a of lista){
+      const li = document.createElement('li');
+      li.className = 'item-archivo';
+      const b = document.createElement('button');
+      b.textContent = a.nombre;
+      b.dataset.id = a.id;
+      b.className = a.id === archivoActivo ? 'activo' : '';
+      b.addEventListener('click', () => seleccionar(a.id));
+      li.appendChild(b);
+      const ln = document.createElement('span');
+      ln.className = 'ln';
+      ln.textContent = a.lineas + ' líneas';
+      li.appendChild(ln);
+      ul.appendChild(li);
+    }
+    btn.addEventListener('click', () => {
+      const abierto = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', abierto ? 'false' : 'true');
+      ul.hidden = abierto;
+    });
+
+    grupoEl.appendChild(btn);
+    grupoEl.appendChild(ul);
+    arbol.appendChild(grupoEl);
+  }
+
+  if(!filtrados.length){
+    arbol.innerHTML = '<div style="padding:16px; color:var(--muted); font-size:13px">Sin resultados.</div>';
+  }
+}
+
+function escapeHtml(s){
+  return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+
+function seleccionar(id){
+  const archivo = DATA.archivos.find(a => a.id === id);
+  if(!archivo) return;
+  archivoActivo = id;
+  history.replaceState(null, '', '#' + id);
+
+  document.querySelectorAll('.item-archivo button').forEach(b => {
+    b.classList.toggle('activo', b.dataset.id === id);
+  });
+
+  const partes = archivo.ruta.split('/');
+  const rutaHtml = partes.map((p,i) => i===partes.length-1 ? `<span>${p}</span>` : `<span style="color:var(--muted)">${p}</span><span class="sep">/</span>`).join('');
+
+  document.getElementById('panelHead').innerHTML = `
+    <div class="ruta">${rutaHtml}<span class="badge-capa">${archivo.capa}</span></div>
+    ${archivo.proposito ? `<p class="proposito">${escapeHtml(archivo.proposito)}</p>` : ''}
+    <div class="meta-fila"><span>${archivo.lineas} líneas</span></div>
+    <button class="copiar" id="btnCopiar">⧉ Copiar código</button>
+  `;
+
+  const scroll = document.getElementById('codeScroll');
+  scroll.innerHTML = '<pre class="codigo"><code class="language-dart"></code></pre>';
+  const codeEl = scroll.querySelector('code');
+  codeEl.textContent = archivo.contenido;
+  hljs.highlightElement(codeEl);
+  scroll.scrollTop = 0;
+
+  document.getElementById('btnCopiar').addEventListener('click', async (ev) => {
+    const btn = ev.currentTarget;
+    try {
+      await navigator.clipboard.writeText(archivo.contenido);
+      btn.textContent = '✓ Copiado'; btn.classList.add('ok');
+    } catch(e){
+      const sel = window.getSelection(); const range = document.createRange();
+      range.selectNodeContents(codeEl); sel.removeAllRanges(); sel.addRange(range);
+      btn.textContent = 'Selecciona y copia (Ctrl+C)';
+    }
+    setTimeout(() => { btn.textContent = '⧉ Copiar código'; btn.classList.remove('ok'); }, 1800);
+  });
+
+  if (window.innerWidth <= 760) {
+    document.getElementById('sidebar').classList.remove('abierto');
+  }
+}
+
+function pintarStats(){
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><b>${DATA.totalArchivos}</b><span>Archivos</span></div>
+    <div class="stat"><b>${DATA.totalLineas.toLocaleString('es-PE')}</b><span>Líneas</span></div>
+  `;
+}
+
+document.getElementById('buscarInput').addEventListener('input', (e) => render(e.target.value));
+document.getElementById('btnAbrir').addEventListener('click', () => document.getElementById('sidebar').classList.add('abierto'));
+
+pintarStats();
+render('');
+
+const hashId = location.hash.replace('#','');
+const inicial = DATA.archivos.find(a => a.id === hashId) || DATA.archivos.find(a => a.ruta === 'lib/main.dart') || DATA.archivos[0];
+if (inicial) seleccionar(inicial.id);
+</script>

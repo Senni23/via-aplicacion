@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>VÍA — Segunda Entrega</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0B0F14; font-family: Arial, Helvetica, sans-serif; }
+  :root {
+    --fondo: #0B0F14;
+    --superficie: #151A21;
+    --superficie2: #1F2630;
+    --borde: #39424F;
+    --texto: #FFFFFF;
+    --suave: #B9C2CE;
+    --amarillo: #FFD400;
+    --cian: #4DD0FF;
+    --verde: #5BE39A;
+    --rojo: #FF8080;
+  }
+  .pagina {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    page-break-after: always;
+    padding: 56px 72px;
+    color: var(--texto);
+    overflow: hidden;
+  }
+  .kicker { color: var(--amarillo); font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-size: 36px; margin: 0 0 20px 0; }
+  h1.grande { font-size: 44px; }
+  p.lead { color: var(--suave); font-size: 17px; line-height: 1.5; max-width: 980px; }
+  .card {
+    background: var(--superficie);
+    border: 2px solid var(--borde);
+    border-radius: 16px;
+    padding: 20px 22px;
+  }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .badge { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; font-weight: 800; font-size: 15px; color: #000; margin-bottom: 10px; }
+  .badge.y { background: var(--amarillo); }
+  .badge.c { background: var(--cian); }
+  .badge.g { background: var(--verde); }
+  .badge.r { background: var(--rojo); }
+  .card h3 { margin: 0 0 6px 0; font-size: 17px; }
+  .card p { margin: 0; color: var(--suave); font-size: 14px; line-height: 1.45; }
+  .footnote { position: absolute; bottom: 36px; left: 72px; right: 72px; color: var(--suave); font-size: 13px; font-style: italic; border-top: 1px solid var(--borde); padding-top: 12px; }
+  .pill { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 700; margin-right: 8px; }
+  .pill.ok { background: rgba(91,227,154,.15); color: var(--verde); border: 1px solid var(--verde); }
+  .pill.warn { background: rgba(255,128,128,.15); color: var(--rojo); border: 1px solid var(--rojo); }
+  .pill.info { background: rgba(77,208,255,.15); color: var(--cian); border: 1px solid var(--cian); }
+  code, .mono { font-family: 'Consolas', 'Courier New', monospace; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th { text-align: left; color: var(--amarillo); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 8px 10px; border-bottom: 2px solid var(--borde); }
+  td { padding: 10px 10px; border-bottom: 1px solid var(--borde); color: var(--suave); vertical-align: top; }
+  td.tit { color: var(--texto); font-weight: 700; width: 160px; }
+  .phoneshot { border-radius: 20px; border: 3px solid var(--borde); overflow: hidden; height: 100%; }
+  .phoneshot img { width: 100%; display: block; }
+  .twocol { display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: start; height: 100%; }
+  .logo { width: 44px; height: 44px; border-radius: 12px; background: var(--amarillo); color:#000; font-weight: 900; font-size: 22px; display:flex; align-items:center; justify-content:center; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="pagina" style="display:flex; flex-direction:column; justify-content:center;">
+  <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px;">
+    <div class="logo" style="width:64px;height:64px;font-size:30px;">V</div>
+    <div>
+      <div style="font-size:40px; font-weight:800;">VÍA</div>
+      <div style="color:var(--suave); font-size:15px;">Voz, Imagen y Accesibilidad</div>
+    </div>
+  </div>
+  <div class="kicker">Segunda entrega</div>
+  <h1 class="grande">Del prototipo al producto funcional</h1>
+  <p class="lead">Diseño, prototipado y evaluación inicial de la aplicación inclusiva. En esta entrega VÍA dejó de ser
+    una maqueta estática: es una aplicación Flutter real, instalable en un teléfono Android, que lee en voz alta,
+    escucha comandos y se repinta al instante según el perfil de accesibilidad elegido.</p>
+  <div style="margin-top:36px; display:flex; gap:14px;">
+    <span class="pill ok">✓ Prototipo funcional</span>
+    <span class="pill info">✓ Evaluación heurística (Nielsen)</span>
+    <span class="pill ok">✓ Protocolo de prueba con usuarios</span>
+  </div>
+  <div style="margin-top:56px; color:var(--suave); font-size:14px;">
+    Curso: Interacción entre Hombre y Máquina · Universidad Tecnológica del Perú<br>
+    Integrantes — Enrique Sebastian Poma Nizama · U23200217
+  </div>
+</div>
+
+<!-- RESUMEN EJECUTIVO -->
+<div class="pagina">
+  <div class="kicker">Resumen ejecutivo</div>
+  <h1>Qué cambió desde la primera entrega</h1>
+  <p class="lead">La Entrega 1 propuso y diseñó la solución (teoría, requisitos, mockups estáticos). Esta entrega la
+    construye: hay código fuente real, corriendo en un dispositivo real, que se puede tocar, hablar y escuchar.</p>
+  <div class="grid3" style="margin-top:28px;">
+    <div class="card">
+      <div class="badge y">1</div>
+      <h3>Entrega 1 → Entrega 2</h3>
+      <p>De 6 mockups en HTML/PNG (sin funcionar) a 32 archivos Dart, 3 676 líneas de código, compilando a APK real
+        para Android.</p>
+    </div>
+    <div class="card">
+      <div class="badge c">2</div>
+      <h3>Alcance: profundidad, no ancho</h3>
+      <p>La consigna pide cubrir 5 grupos (visual, auditivo, motor, cognitivo, adultos mayores). Decidimos, como
+        parte del DCU, profundizar en uno solo — discapacidad visual — en vez de hacer cinco soluciones superficiales.
+        Se explica el porqué en la página siguiente.</p>
+    </div>
+    <div class="card">
+      <div class="badge g">3</div>
+      <h3>Nuevo: personalización de color</h3>
+      <p>Más allá de lo pedido: el usuario cambia el esquema de color en vivo (alto contraste oscuro, claro, o una
+        paleta segura para daltonismo) sin reiniciar la app.</p>
+    </div>
+  </div>
+  <div class="grid3" style="margin-top:18px;">
+    <div class="card">
+      <h3>32</h3>
+      <p>archivos Dart, organizados en 4 capas (core, data, features, shared) — la misma arquitectura funcional
+        propuesta en la Entrega 1, ahora hecha código.</p>
+    </div>
+    <div class="card">
+      <h3>3 676</h3>
+      <p>líneas de código fuente, comentadas en español, explicando el porqué de cada decisión no obvia.</p>
+    </div>
+    <div class="card">
+      <h3>6</h3>
+      <p>pantallas completas y navegables: perfil, inicio por voz, lector adaptativo, Ojo IA, ajustes y ayuda
+        humana (simulada).</p>
+    </div>
+  </div>
+</div>
+
+<!-- DCU -->
+<div class="pagina">
+  <div class="kicker">Diseño Centrado en el Usuario</div>
+  <h1>Las cinco etapas, aplicadas a VÍA</h1>
+  <p class="lead">Siguiendo el proceso de DCU visto en el curso (y las heurísticas de Nielsen que se evalúan en la
+    página 7), cada etapa dejó una evidencia concreta dentro del propio proyecto.</p>
+  <table style="margin-top:24px;">
+    <tr><th>Etapa</th><th>Qué se hizo</th><th>Evidencia</th></tr>
+    <tr>
+      <td class="tit">1 · Empatizar / investigar</td>
+      <td>Revisión de literatura sobre accesibilidad para personas ciegas (VizWiz, VizWiz Grand Challenge, estudio
+        de Adnin &amp; Das sobre IA generativa y usuarios ciegos) y de datos duros (OMS, WebAIM, INEI).</td>
+      <td><span class="pill info">docs/01-propuesta.md</span></td>
+    </tr>
+    <tr>
+      <td class="tit">2 · Definir</td>
+      <td>22 requisitos funcionales y 11 no funcionales, cada uno trazable a una fase del plan de trabajo.</td>
+      <td><span class="pill info">docs/02-requisitos.md</span></td>
+    </tr>
+    <tr>
+      <td class="tit">3 · Idear / diseñar</td>
+      <td>Sistema de diseño con colores verificados matemáticamente (fórmula de contraste WCAG), tipografía y
+        medidas táctiles mínimas de 48×48&nbsp;dp.</td>
+      <td><span class="pill info">docs/04-design-system.md</span></td>
+    </tr>
+    <tr>
+      <td class="tit">4 · Prototipar</td>
+      <td>Primero en baja fidelidad (HTML estático), después en alta fidelidad <b>funcional</b>: una app Flutter
+        real que compila, instala y corre en un teléfono Android.</td>
+      <td><span class="pill ok">32 archivos · lib/</span></td>
+    </tr>
+    <tr>
+      <td class="tit">5 · Evaluar</td>
+      <td>Evaluación heurística de Nielsen sobre el prototipo funcional (página 7-8) + protocolo de prueba con
+        usuarios reales y escala SUS, listo para ejecutarse (página 9).</td>
+      <td><span class="pill warn">Pendiente de correr con usuarios</span></td>
+    </tr>
+  </table>
+  <div class="footnote">La etapa 5 queda documentada como protocolo, no como resultados: una evaluación con
+    personas reales requiere agendarla aparte de esta entrega — ver página 9.</div>
+</div>
+
+<!-- ARQUITECTURA DEL CODIGO -->
+<div class="pagina">
+  <div class="kicker">Para sustentar el trabajo</div>
+  <h1>Cómo está armado el código</h1>
+  <div class="twocol">
+    <div>
+      <p class="lead" style="margin-bottom:18px;">VÍA separa el código en 4 capas, para que cada pieza tenga un
+        único trabajo y se pueda explicar sin enredarse con las demás.</p>
+      <table>
+        <tr><th>Capa</th><th>Qué vive ahí</th><th>Ejemplo real</th></tr>
+        <tr><td class="tit">core/</td><td>Tema visual, accesibilidad (voz+vibración+anuncio), comandos de voz</td><td class="mono">anunciador.dart</td></tr>
+        <tr><td class="tit">data/</td><td>Modelos y servicios — cada paquete externo (TTS, cámara, OCR) vive envuelto en un único archivo</td><td class="mono">tts_service.dart</td></tr>
+        <tr><td class="tit">features/</td><td>Una carpeta por pantalla: la vista dibuja, el controlador decide</td><td class="mono">ojo_ia_controller.dart</td></tr>
+        <tr><td class="tit">shared/</td><td>Botones y tarjetas reutilizados en varias pantallas</td><td class="mono">tarjeta_accesible.dart</td></tr>
+      </table>
+      <p style="color:var(--suave); font-size:13.5px; margin-top:16px; line-height:1.5;">
+        <b style="color:var(--texto);">Regla que no se negocia:</b> ningún widget llama a un paquete externo
+        directamente. Si mañana se cambia el motor de voz, se toca <i>un solo archivo</i> — nunca las 14 pantallas.
+      </p>
+    </div>
+    <div class="card" style="height:100%;">
+      <h3 style="margin-bottom:10px;">El Anunciador — la pieza más usada</h3>
+      <p style="margin-bottom:12px;">Une voz + vibración + lector de pantalla en una sola llamada. Toda acción del
+        usuario pasa por aquí (regla de accesibilidad: si algo cambia y no se anuncia, para un usuario ciego ese
+        cambio no existe).</p>
+      <pre style="background:var(--fondo); border-radius:10px; padding:14px; font-size:12px; color:var(--cian); overflow:hidden; line-height:1.6;" class="mono">class Anunciador {
+  Future&lt;void&gt; anunciar(
+    String mensaje, {
+    bool interrumpir = false,
+    TipoVibracion vibracion =
+        TipoVibracion.cambioFoco,
+  }) async {
+    vibracion.ejecutar();
+    SemanticsService.announce(
+        mensaje, TextDirection.ltr);
+    await _tts.hablar(mensaje,
+        interrumpir: interrumpir);
+  }
+}</pre>
+    </div>
+  </div>
+</div>
+
+<!-- PANTALLAS 1 -->
+<div class="pagina">
+  <div class="kicker">Prototipo funcional · capturas reales</div>
+  <h1>Perfil e inicio por voz</h1>
+  <div class="grid2" style="height:520px;">
+    <div class="phoneshot"><img src="file:///C:/Users/Sebastian Poma N/Documents/Ciclo8/HombreYMquina/via-app/via-app/docs/entregables/_build/web/onboarding.jpg"></div>
+    <div class="phoneshot"><img src="file:///C:/Users/Sebastian Poma N/Documents/Ciclo8/HombreYMquina/via-app/via-app/docs/entregables/_build/web/inicio.jpg"></div>
+  </div>
+  <div class="footnote">Capturas tomadas de la app real corriendo (no mockups). Izquierda: P-01, perfil de
+    accesibilidad. Derecha: P-02, inicio con escucha activa y accesos rápidos.</div>
+</div>
+
+<!-- PANTALLAS 2 - PERSONALIZACION -->
+<div class="pagina">
+  <div class="kicker">Lo que pide el profesor, y algo más</div>
+  <h1>Personalización de color en vivo</h1>
+  <p class="lead" style="margin-bottom:20px;">Un cambio en Ajustes repinta la app <b>entera</b>, al instante, sin
+    reiniciar nada — incluida la paleta segura para daltonismo (protanopía/deuteranopía), con contraste verificado
+    matemáticamente igual que el esquema por defecto.</p>
+  <div class="grid2" style="height:420px;">
+    <div class="phoneshot"><img src="file:///C:/Users/Sebastian Poma N/Documents/Ciclo8/HombreYMquina/via-app/via-app/docs/entregables/_build/web/ajustes_daltonico.jpg"></div>
+    <div class="phoneshot"><img src="file:///C:/Users/Sebastian Poma N/Documents/Ciclo8/HombreYMquina/via-app/via-app/docs/entregables/_build/web/inicio_daltonico.jpg"></div>
+  </div>
+  <div class="footnote">Mismo estado de la app, un toque después: el esquema "Colores adaptados (daltonismo)"
+    seleccionado en Ajustes (izquierda) repintó también la pantalla de Inicio (derecha) sin recargar la app.</div>
+</div>
+
+<!-- NIELSEN 1 -->
+<div class="pagina">
+  <div class="kicker">Evaluación heurística</div>
+  <h1>Las 10 heurísticas de Nielsen, aplicadas a VÍA</h1>
+  <table style="font-size:12.8px;">
+    <tr><th style="width:230px;">Heurística</th><th>Cómo la cumple VÍA</th></tr>
+    <tr><td class="tit">1. Visibilidad del estado</td><td>Toda acción se confirma por voz + vibración + anuncio al lector de pantalla a la vez (clase <span class="mono">Anunciador</span>). El orbe de Inicio muestra "● ESCUCHANDO…" en tiempo real.</td></tr>
+    <tr><td class="tit">2. Coincidencia con el mundo real</td><td>Los mensajes de voz dan primero el dato, después el adorno ("S/ 87.40, total a pagar"), sin jerga técnica ni nombres de íconos.</td></tr>
+    <tr><td class="tit">3. Control y libertad</td><td>Comandos "repetir", "parar", "más rápido/lento" en cualquier pantalla; el lector permite anterior/siguiente/pausar en cualquier momento.</td></tr>
+    <tr><td class="tit">4. Consistencia y estándares</td><td>Un solo sistema de diseño (<span class="mono">ColoresVia</span>, <span class="mono">TemaVia</span>) usado por las 6 pantallas: mismos 48&nbsp;dp mínimos, mismo radio de tarjeta, mismo patrón de anuncio.</td></tr>
+    <tr><td class="tit">5. Prevención de errores</td><td>Ojo IA avisa por voz antes de capturar ("hay poca luz", "acércate") en vez de dejar que el usuario tome una foto inservible.</td></tr>
+    <tr><td class="tit">6. Reconocer antes que recordar</td><td>Los "Accesos rápidos" de Inicio y los comandos de voz se anuncian explícitamente ("puedes decir: leer documento, abrir cámara o ajustes") en vez de exigir memorizarlos.</td></tr>
+    <tr><td class="tit">7. Flexibilidad y eficiencia</td><td>Cada acción tiene equivalente táctil <i>y</i> de voz — un usuario con resto visual toca, uno sin visión habla.</td></tr>
+    <tr><td class="tit">8. Diseño estético y minimalista</td><td>Una sola acción principal por pantalla (amarillo); nada compite por atención. Jerarquía tipográfica fija (26/19/18/16&nbsp;sp).</td></tr>
+    <tr><td class="tit">9. Ayudar a reconocer y resolver errores</td><td>"No entendí. Puedes decir: leer documento, abrir cámara o ajustes" en vez de un error seco — nunca un mensaje técnico.</td></tr>
+    <tr><td class="tit">10. Ayuda y documentación</td><td>P-06 conecta con un voluntario humano cuando la IA no alcanza (simulado, ver página 9 de la Entrega 1).</td></tr>
+  </table>
+</div>
+
+<!-- NIELSEN 2 - HALLAZGOS HONESTOS -->
+<div class="pagina">
+  <div class="kicker">Evaluación heurística · hallazgos</div>
+  <h1>Lo que la evaluación encontró para mejorar</h1>
+  <p class="lead" style="margin-bottom:20px;">Una evaluación heurística que no encuentra nada que mejorar no es
+    rigurosa. Estos son los tres hallazgos reales de recorrer el prototipo funcional, con su heurística y severidad.</p>
+  <div class="grid3">
+    <div class="card">
+      <span class="pill warn">Severidad baja</span>
+      <h3 style="margin-top:10px;">H10 — Comandos no descubribles de entrada</h3>
+      <p>El onboarding no enseña todavía los comandos de voz disponibles (llegan recién en Inicio). Un usuario
+        nuevo podría no saber qué decir la primera vez.<br><br>
+        <b style="color:var(--texto);">Mejora propuesta:</b> un comando "ayuda" que liste los comandos disponibles,
+        accesible desde cualquier pantalla.</p>
+    </div>
+    <div class="card">
+      <span class="pill warn">Severidad baja</span>
+      <h3 style="margin-top:10px;">H1 — Silencio durante procesos largos</h3>
+      <p>Mientras el OCR procesa una foto o el lector web descarga una página, solo hay un texto estático
+        ("Leyendo…"), sin progreso audible intermedio.<br><br>
+        <b style="color:var(--texto);">Mejora propuesta:</b> un sonido de progreso cada ~3 s en esperas largas.</p>
+    </div>
+    <div class="card">
+      <span class="pill info">Limitación de alcance</span>
+      <h3 style="margin-top:10px;">H5 — Guía de encuadre simplificada</h3>
+      <p>Ojo IA avisa de la <b>luz</b> real del encuadre (medida de verdad), pero no detecta si el documento está
+        "cortado" o "lejos" con precisión — eso pide reconocer bordes, con una librería de visión más pesada
+        (OpenCV), fuera del alcance de esta fase. Documentado en el propio código.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOLO SUS -->
+<div class="pagina">
+  <div class="kicker">Siguiente paso de esta entrega</div>
+  <h1>Protocolo de prueba con usuarios (escala SUS)</h1>
+  <p class="lead">Listo para ejecutarse con 3 a 5 personas (ciegas, con baja visión, o con los ojos vendados
+    simulando ceguera total, como indica la propia guía de desarrollo del proyecto).</p>
+  <div class="grid2" style="margin-top:20px;">
+    <div class="card">
+      <h3>Tareas a cronometrar</h3>
+      <p>
+        1. Elegir un perfil de accesibilidad sin ayuda (P-01).<br>
+        2. Decir "leer documento" y escuchar el resultado completo.<br>
+        3. Pausar y reanudar la lectura por voz.<br>
+        4. Cambiar la velocidad de voz desde Ajustes.<br>
+        5. Decir "ayuda humana" y llegar hasta P-06.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Cuestionario SUS (10 ítems, 1-5)</h3>
+      <p style="font-size:12.5px; line-height:1.55;">
+        1. Usaría esta app frecuentemente · 2. La encontré innecesariamente compleja ·
+        3. La app me pareció fácil de usar · 4. Necesitaría ayuda de alguien técnico ·
+        5. Las funciones están bien integradas · 6. Hay demasiada inconsistencia ·
+        7. La mayoría aprendería a usarla rápido · 8. La sentí incómoda de usar ·
+        9. Me sentí segura(o) usándola · 10. Necesité aprender mucho antes de empezar.
+      </p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px;">
+    <h3>Cómo se calcula el puntaje</h3>
+    <p>Ítems impares: puntaje − 1. Ítems pares: 5 − puntaje. Sumar los 10, multiplicar por 2.5 → escala 0-100.
+      Un puntaje sobre 68 se considera por encima del promedio de usabilidad (Brooke, 1996).</p>
+  </div>
+  <div class="footnote">Esta página es la plantilla, no el resultado — se completa al correr la prueba con
+    personas reales, antes de la presentación final de lanzamiento.</div>
+</div>
+
+<!-- CONCLUSIONES -->
+<div class="pagina">
+  <div class="kicker">Cierre</div>
+  <h1>Conclusiones y lo que falta</h1>
+  <div class="grid2">
+    <div class="card">
+      <h3>Lo que ya funciona (fases 0-6 del plan)</h3>
+      <p>Entorno, tema visual con 3 esquemas de color, voz (TTS), perfil de accesibilidad, navegación por voz,
+        lector adaptativo con contenido de ejemplo, y ajustes con todo aplicándose en vivo.</p>
+    </div>
+    <div class="card">
+      <h3>Lo que sigue (fases 7-12 del plan)</h3>
+      <p>Cámara + OCR en el dispositivo, historial, lector web completo (ya con servicio implementado), descripción
+        de imágenes con IA en la nube, y la simulación de ayuda humana.</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px;">
+    <h3>Decisión de alcance, otra vez, para que quede explícito</h3>
+    <p>El profesor pidió cubrir 5 grupos de usuarios; VÍA profundiza en uno. Esto sigue el propio Diseño Centrado en
+      el Usuario: diseñar "para todos" sin investigación específica de cada grupo produce soluciones superficiales
+      que no sirven de verdad a nadie. El marco teórico de la Entrega 1 (Shneiderman, 2000; Story, Mueller &amp;
+      Mace, 1998) respalda exactamente esta decisión: interfaces multicapa y flexibles, no un diseño único forzado
+      a todos los perfiles.</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,557 @@
+<title>Guía de sustentación VÍA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,18..144,400;0,18..144,600;0,18..144,700;1,18..144,400&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: guía de estudio de una sola página, navegable por una barra
+   lateral de secciones con anclas — pensada para repasar antes y tener
+   abierta durante la sustentación, no para leerse de corrido. */
+:root{
+  --bg:#FBF8F2; --panel:#FFFFFF; --surface:#F3EEE3; --border:#E3DBC9;
+  --text:#262219; --muted:#6B6253; --faint:#9A9183;
+  --accent:#9A6B00; --accent-bg:#F5E6C3; --accent-ink:#2B1E00;
+  --info:#1E5F8C; --info-bg:#E3EFF6;
+  --ok:#2E6B3E; --ok-bg:#E4F0E6;
+  --warn:#8A3A1F; --warn-bg:#F6E6DF;
+  --font-ui:'Public Sans',system-ui,-apple-system,sans-serif;
+  --font-read:'Literata',Georgia,serif;
+  --font-code:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#191611; --panel:#211D16; --surface:#2A251C; --border:#3A3326;
+    --text:#ECE6D8; --muted:#B3A890; --faint:#7D7461;
+    --accent:#E0B339; --accent-bg:#3A2E0E; --accent-ink:#2B1E00;
+    --info:#7FC0EC; --info-bg:#1A2B36;
+    --ok:#8FD4A0; --ok-bg:#1A2E1E;
+    --warn:#E8A585; --warn-bg:#331F16;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#191611; --panel:#211D16; --surface:#2A251C; --border:#3A3326;
+  --text:#ECE6D8; --muted:#B3A890; --faint:#7D7461;
+  --accent:#E0B339; --accent-bg:#3A2E0E; --accent-ink:#2B1E00;
+  --info:#7FC0EC; --info-bg:#1A2B36;
+  --ok:#8FD4A0; --ok-bg:#1A2E1E;
+  --warn:#E8A585; --warn-bg:#331F16;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--text); font-family:var(--font-ui); min-height:100%;}
+.layout{display:flex; max-width:1180px; margin:0 auto;}
+
+/* ---- Sidebar ---- */
+.side{
+  width:230px; min-width:230px; position:sticky; top:0; align-self:flex-start;
+  height:100vh; overflow-y:auto; padding:24px 14px 40px; border-right:1px solid var(--border);
+}
+.side h1{font-size:15px; margin:0 0 2px; font-weight:800;}
+.side .sub{font-size:11.5px; color:var(--muted); margin-bottom:18px;}
+.side nav a{
+  display:block; padding:7px 10px; border-radius:7px; color:var(--text); text-decoration:none;
+  font-size:13px; margin-bottom:1px; border-left:2px solid transparent;
+}
+.side nav a:hover{background:var(--surface)}
+.side nav a.activo{background:var(--accent-bg); color:var(--accent-ink); border-left-color:var(--accent); font-weight:600;}
+.side nav .grupo{font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--faint); font-weight:700; margin:16px 10px 4px;}
+.side nav .grupo:first-child{margin-top:0}
+.theme-btn{
+  margin-top:16px; width:100%; padding:7px 10px; border-radius:7px; border:1px solid var(--border);
+  background:var(--panel); color:var(--text); font:12px var(--font-ui); cursor:pointer;
+}
+
+/* ---- Main ---- */
+main{flex:1; min-width:0; padding:40px 48px 120px;}
+.portada{margin-bottom:48px;}
+.kicker{color:var(--accent); font:700 12.5px var(--font-ui); text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;}
+h1.tit{font:700 34px/1.25 var(--font-ui); margin:0 0 10px; max-width:30ch;}
+.lead{font:400 17px/1.6 var(--font-read); color:var(--muted); max-width:62ch;}
+
+section{margin-bottom:56px; scroll-margin-top:24px;}
+section h2{font:700 24px var(--font-ui); margin:0 0 6px; padding-bottom:10px; border-bottom:2px solid var(--border);}
+section h3{font:700 17px var(--font-ui); margin:26px 0 6px; color:var(--accent-ink); }
+:root[data-theme="dark"] section h3, @media (prefers-color-scheme:dark){section h3{color:var(--accent)}}
+p{font:400 16px/1.68 var(--font-read); margin:0 0 14px; max-width:68ch;}
+p.chica{font-size:14px; color:var(--muted);}
+strong{font-weight:700}
+code, .mono{font-family:var(--font-code); font-size:0.88em; background:var(--surface); padding:1px 5px; border-radius:4px; border:1px solid var(--border);}
+
+.tarjeta{
+  background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px 20px;
+  margin:16px 0;
+}
+.tarjeta.accent{border-left:4px solid var(--accent); background:var(--accent-bg);}
+.tarjeta.info{border-left:4px solid var(--info); background:var(--info-bg);}
+.tarjeta.ok{border-left:4px solid var(--ok); background:var(--ok-bg);}
+.tarjeta.warn{border-left:4px solid var(--warn); background:var(--warn-bg);}
+.tarjeta h4{margin:0 0 6px; font:700 14.5px var(--font-ui);}
+.tarjeta p{margin:0; font-size:15px;}
+
+.ficha{
+  display:grid; grid-template-columns: minmax(90px,140px) 1fr; gap:4px 16px; font-size:14px;
+  background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin:14px 0;
+  min-width:0;
+}
+.ficha dd{min-width:0; word-break:break-word;}
+.ficha dt{color:var(--muted); font-weight:600;}
+.ficha dd{margin:0; font-family:var(--font-code); font-size:13px;}
+
+pre{
+  background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px 18px;
+  overflow-x:auto; margin:14px 0; font:13px/1.6 var(--font-code);
+}
+
+.pregunta{
+  border:1px solid var(--border); border-radius:10px; margin:10px 0; overflow:hidden; background:var(--panel);
+}
+.pregunta summary{
+  padding:13px 16px; cursor:pointer; font-weight:600; font-size:15px; list-style:none;
+  display:flex; align-items:center; gap:10px;
+}
+.pregunta summary::-webkit-details-marker{display:none}
+.pregunta summary::before{content:"+"; color:var(--accent); font-weight:800; font-size:16px; width:16px;}
+.pregunta[open] summary::before{content:"–";}
+.pregunta .resp{padding:0 16px 16px 42px;}
+.pregunta .resp p{font-size:15px;}
+
+.glosario dt{font-weight:700; font-family:var(--font-code); font-size:14px; margin-top:12px;}
+.glosario dd{margin:2px 0 0; font-size:14.5px; color:var(--muted); max-width:60ch;}
+
+.tabla-scroll{overflow-x:auto; margin:14px 0; max-width:100%;}
+table{border-collapse:collapse; width:100%; min-width:460px; font-size:14px;}
+th{text-align:left; padding:8px 10px; border-bottom:2px solid var(--border); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;}
+td{padding:9px 10px; border-bottom:1px solid var(--border); vertical-align:top;}
+
+.pildora{display:inline-block; padding:2px 9px; border-radius:999px; font-size:11.5px; font-weight:700; background:var(--surface); border:1px solid var(--border); color:var(--muted); margin-right:6px;}
+
+@media (max-width:860px){
+  .layout{flex-direction:column;}
+  .side{position:relative; width:100%; height:auto; border-right:none; border-bottom:1px solid var(--border);}
+  main{padding:28px 20px 80px;}
+}
+</style>
+
+<div class="layout">
+  <aside class="side">
+    <h1>Guía de sustentación</h1>
+    <div class="sub">Proyecto VÍA</div>
+    <nav id="nav">
+      <div class="grupo">Para empezar</div>
+      <a href="#resumen">El pitch de 30 segundos</a>
+      <a href="#arquitectura">Cómo está organizado</a>
+      <div class="grupo">Cada funcionalidad</div>
+      <a href="#voz">Hablar (texto a voz)</a>
+      <a href="#escuchar">Escuchar comandos</a>
+      <a href="#camara">Cámara + lectura de texto</a>
+      <a href="#web">Leer páginas web</a>
+      <a href="#color">Cambiar colores en vivo</a>
+      <a href="#guardado">Guardar tus preferencias</a>
+      <a href="#navegacion">Moverse entre pantallas</a>
+      <div class="grupo">Para impresionar</div>
+      <a href="#bugs">Bugs que encontraste y arreglaste</a>
+      <a href="#conceptos">Conceptos de Dart que debes saber</a>
+      <div class="grupo">Antes de exponer</div>
+      <a href="#preguntas">Preguntas probables</a>
+      <a href="#glosario">Glosario rápido</a>
+    </nav>
+    <button class="theme-btn" id="btnTema">🌓 Cambiar tema</button>
+  </aside>
+
+  <main>
+    <div class="portada">
+      <div class="kicker">Guía de estudio · para ti, no para entregar</div>
+      <h1 class="tit">Cómo explicar que tú programaste VÍA</h1>
+      <p class="lead">Esto no es el informe — es para que entiendas lo que hay detrás de cada pantalla, en tus
+        propias palabras, y puedas responder cualquier pregunta sin quedarte callado. Léelo una vez entero, y
+        tenlo abierto en el celular o la laptop durante la exposición.</p>
+    </div>
+
+    <section id="resumen">
+      <h2>El pitch de 30 segundos</h2>
+      <p>Si el profesor te interrumpe con "explícame rápido qué hace tu app", esto es lo que dices, de memoria:</p>
+      <div class="tarjeta accent">
+        <p><strong>"VÍA es una aplicación para Android que le permite a una persona ciega usar su celular sin ver
+          la pantalla. Habla con ella — le dice "leer documento" o "abrir cámara" — y la app le responde en voz
+          alta. Puede fotografiar un recibo y la app se lo lee, puede abrir una página web y la app la reconstruye
+          con buen contraste y la lee en voz alta, y todo el tiempo confirma cada acción con voz y con vibración,
+          porque si algo cambia en la pantalla y la persona no lo escucha ni lo siente, para ella ese cambio no
+          existió."</strong></p>
+      </div>
+      <p>Esa última frase — "si algo cambia y no se anuncia, no existe" — es la regla que gobierna todo el
+        proyecto. Repítela si te preguntan "¿cuál fue tu principio de diseño?".</p>
+    </section>
+
+    <section id="arquitectura">
+      <h2>Cómo está organizado el código</h2>
+      <p>El proyecto tiene <strong>32 archivos y 3 708 líneas</strong>, repartidos en 4 carpetas. Para explicarlo
+        sin enredarte, usa esta comparación: es como un restaurante.</p>
+      <div class="tabla-scroll"><table>
+        <tr><th>Carpeta</th><th>Es como…</th><th>Qué hace</th></tr>
+        <tr><td><code>core/</code></td><td>Las reglas de la casa</td><td>Los colores, cómo se avisa algo por voz y vibración, el diccionario de comandos de voz. Nada específico de una pantalla — reglas que usan todas.</td></tr>
+        <tr><td><code>data/</code></td><td>La cocina y el almacén</td><td>Habla con el "mundo exterior": el motor de voz del celular, la cámara, el guardado de archivos. Las demás partes de la app NUNCA hablan directo con esas cosas — siempre pasan por aquí.</td></tr>
+        <tr><td><code>features/</code></td><td>Las mesas del comedor</td><td>Cada una de las 6 pantallas. Cada pantalla tiene 2 archivos: uno que <em>dibuja</em> (la vista) y otro que <em>decide</em> (el controlador).</td></tr>
+        <tr><td><code>shared/</code></td><td>Las sillas y vajilla, reutilizadas en toda la casa</td><td>Botones y tarjetas que se repiten en varias pantallas, para no copiar el mismo código seis veces.</td></tr>
+      </table></div>
+      <div class="tarjeta info">
+        <h4>¿Por qué separar "la vista" de "el controlador"?</h4>
+        <p>Es la misma idea que ya conoces de separar HTML de JavaScript: el HTML (la vista) solo muestra cosas, y
+          el JavaScript (el controlador) decide qué pasa cuando haces clic. Aquí, el archivo <code>_screen.dart</code>
+          solo dibuja botones y texto; el archivo <code>_controller.dart</code> decide qué hacer cuando tocas algo
+          o cuando llega un resultado de la cámara. Si el profesor pregunta "¿por qué dos archivos por pantalla?",
+          esa es tu respuesta.</p>
+      </div>
+      <h3>La regla que no se rompe</h3>
+      <p>Ningún botón ni pantalla llama directamente a un paquete externo (como el que convierte texto a voz).
+        Siempre pasa primero por un archivo "servicio" dentro de <code>data/services/</code>. Por ejemplo,
+        <code>tts_service.dart</code> es el único archivo de los 32 que menciona la palabra <code>flutter_tts</code>
+        (el paquete que convierte texto en voz). Si mañana cambiáramos de paquete de voz, se edita un solo
+        archivo, no las 14 pantallas que usan la voz.</p>
+    </section>
+
+    <section id="voz">
+      <h2>Cómo habla la app (texto a voz)</h2>
+      <div class="ficha">
+        <dt>Archivo clave</dt><dd>lib/data/services/tts_service.dart</dd>
+        <dt>Paquete usado</dt><dd>flutter_tts</dd>
+        <dt>Quién lo usa</dt><dd>Anunciador (core/accessibility/anunciador.dart)</dd>
+      </div>
+      <p>Cuando la app necesita decir algo, no llama al motor de voz directamente — llama a una función llamada
+        <code>anunciar()</code> que hace <strong>tres cosas a la vez</strong>: hace vibrar el celular, le avisa al
+        lector de pantalla de Android (TalkBack), y recién ahí le pide al motor de voz que hable. Esta función
+        vive en un solo archivo (<code>anunciador.dart</code>) y <strong>toda la app pasa por ahí</strong> — ni
+        una sola pantalla llama a la voz por su cuenta.</p>
+      <h3>El detalle técnico que puedes explicar si preguntan</h3>
+      <p>El motor de voz del celular (<code>flutter_tts</code>) espera un número de velocidad entre 0 y 1, pero
+        nuestra app le muestra al usuario velocidades de "0.5x a 3x" (como el velocidad de un video de YouTube).
+        Hay una sola línea de código que convierte un número en el otro: <code>(x / 2.6).clamp(0.05, 1.0)</code>.
+        Ese es el único lugar de los 32 archivos que necesita saber ese detalle raro del paquete — por eso está
+        encerrado ahí y no repartido por toda la app.</p>
+      <h3>Por qué el idioma es "es-PE"</h3>
+      <p>Cuando arranca, la app le pregunta al celular qué idiomas de voz tiene instalados, y si encuentra
+        español de Perú lo usa; si no, usa español de España; si no, deja el que venga por defecto. Esto evita que
+        la app se rompa en un celular que no tenga el paquete de voz peruano instalado.</p>
+    </section>
+
+    <section id="escuchar">
+      <h2>Cómo escucha comandos de voz</h2>
+      <div class="ficha">
+        <dt>Archivos clave</dt><dd>stt_service.dart, comandos_voz.dart, home_controller.dart</dd>
+        <dt>Paquete usado</dt><dd>speech_to_text</dd>
+      </div>
+      <p>Esto funciona en dos pasos separados, y es importante que entiendas la diferencia:</p>
+      <h3>Paso 1 — Convertir el audio en texto</h3>
+      <p>El paquete <code>speech_to_text</code> usa el micrófono y te devuelve <strong>texto</strong>, tal cual lo
+        entendió — por ejemplo, si dices "ojo IA" te puede devolver <code>"ojo i a"</code> o incluso
+        <code>"ojo ya"</code>. Este paso no sabe nada de VÍA, solo transcribe.</p>
+      <h3>Paso 2 — Reconocer qué comando es</h3>
+      <p>Ese texto transcrito pasa por una función llamada <code>ComandosVoz.reconocer()</code>, que tiene un
+        diccionario: a cada acción (abrir cámara, leer documento, ajustes…) le corresponde una <em>lista</em> de
+        frases posibles, no solo una. Por ejemplo, "abrir cámara" se reconoce si el texto contiene <code>"ojo
+        ia"</code>, <code>"ojo i a"</code>, <code>"ojo ya"</code>, <code>"camara"</code>, o varias frases más. Así,
+        aunque el reconocimiento de voz transcriba mal, igual encontramos qué quiso decir el usuario.</p>
+      <div class="tarjeta warn">
+        <h4>Una pregunta trampa que te pueden hacer</h4>
+        <p>"¿Por qué a veces no reconoce el comando?" — Respuesta honesta: el reconocimiento de voz de Android no
+          es perfecto, especialmente con siglas como "IA". Por eso la lista de frases por comando tiene varias
+          alternativas, y seguimos agregando más cada vez que encontramos una que falla. Esto es normal en
+          cualquier sistema de reconocimiento de voz, incluido Alexa o Siri.</p>
+      </div>
+      <h3>"Siempre escuchando"</h3>
+      <p>La pantalla de Inicio no espera que toques un botón para escuchar — empieza a escuchar sola al abrir. El
+        paquete de voz se detiene solo después de unos segundos de silencio, así que <code>home_controller.dart</code>
+        lo vuelve a encender cada vez que se detiene, dando la sensación de "siempre está escuchando". Para
+        evitar que esto se vuelva loco si el micrófono falla (como pasa en los emuladores sin micrófono real), hay
+        un límite: después de 3 intentos fallidos seguidos, deja de reintentar solo y espera a que el usuario
+        toque el orbe amarillo para reintentar a mano.</p>
+    </section>
+
+    <section id="camara">
+      <h2>Cámara: encuadre guiado + lectura de texto (OCR)</h2>
+      <div class="ficha">
+        <dt>Archivo clave</dt><dd>lib/features/ojo_ia/ojo_ia_controller.dart (180 líneas)</dd>
+        <dt>Paquetes usados</dt><dd>camera, google_mlkit_text_recognition</dd>
+      </div>
+      <p>Esta es la pantalla más importante para sustentar, porque responde directamente a un dato real citado en
+        la primera entrega: un estudio encontró que <strong>28 % de las fotos que toman las personas ciegas salen
+        inservibles</strong> (mal encuadre, poca luz). VÍA intenta resolver eso <em>antes</em> de tomar la foto, no
+        después.</p>
+      <h3>Cómo funciona el aviso de "hay poca luz"</h3>
+      <p>Mientras la cámara está abierta, cada cuadro de video (varias veces por segundo) se analiza: se toma el
+        plano de "luminancia" de la imagen (una medida técnica de qué tan clara u oscura es cada zona de la
+        foto) y se calcula un promedio. Si ese promedio es menor a 60 (en una escala de 0 a 255), la app dice "hay
+        poca luz"; si es mayor, dice "documento enfocado, buena luz". Los avisos se espacian al menos 2 segundos
+        para no hablar sin parar.</p>
+      <div class="tarjeta">
+        <h4>Sé honesto sobre esta parte si te preguntan</h4>
+        <p>La guía evalúa <strong>luz real</strong>, medida de verdad — eso no es un invento. Pero NO detecta si el
+          documento está "cortado" o "lejos" con precisión real: eso necesitaría reconocer los bordes del papel
+          en la imagen, lo que pide una librería de visión por computadora más pesada (como OpenCV), que no
+          entraba en el tiempo disponible para esta etapa. Está documentado así en el propio código. Decir esto en
+          la sustentación demuestra que entiendes los límites de lo que construiste, no que intentas esconderlos.</p>
+      </div>
+      <h3>Cómo se lee el texto de la foto (OCR)</h3>
+      <p>Una vez capturada la foto, se la pasamos al paquete <code>google_mlkit_text_recognition</code> de Google,
+        que corre <strong>dentro del celular</strong>, sin internet — eso es importante porque cumple dos cosas a
+        la vez: funciona en zonas sin señal, y nunca se envía la foto (que puede tener datos personales, como un
+        recibo con tu nombre) a ningún servidor.</p>
+    </section>
+
+    <section id="web">
+      <h2>Leer páginas web (y la historia del bug de Wikipedia)</h2>
+      <div class="ficha">
+        <dt>Archivo clave</dt><dd>lib/data/services/lector_web_service.dart</dd>
+        <dt>Paquetes usados</dt><dd>http (para descargar la página), html (para leerla)</dd>
+      </div>
+      <p>Cuando escribes una dirección web, la app descarga el HTML de esa página (el mismo código que ves si
+        haces clic derecho → "Ver código fuente" en un navegador) y busca los títulos (<code>h1</code>,
+        <code>h2</code>, <code>h3</code>) y los párrafos (<code>p</code>), para reconstruir el contenido en
+        secciones navegables por voz.</p>
+      <h3>Esta es tu mejor historia para la exposición</h3>
+      <div class="tarjeta ok">
+        <h4>El bug que encontramos y arreglamos probando con Wikipedia de verdad</h4>
+        <p>La primera versión buscaba el párrafo mirando "el elemento justo después del título" en el HTML. Eso
+          funciona en una página simple, pero Wikipedia (y muchos sitios reales) envuelve cada título dentro de
+          una caja extra (<code>&lt;div&gt;</code>), así que "el elemento justo después del título" ya no era el
+          párrafo, sino esa caja vacía. Resultado: la app hubiera leído los títulos de un artículo de Wikipedia,
+          pero ningún párrafo debajo — silencio total. Lo detecté probando con el artículo real de Jorge Luis
+          Borges, <strong>antes</strong> de entregarlo. La solución fue cambiar el método: en vez de "mirar el
+          vecino de al lado", ahora se recorre <em>toda</em> la página en el orden en que aparece el texto
+          (títulos, párrafos e imágenes mezclados) y se va agrupando todo bajo el título más reciente que se
+          encontró — eso funciona sin importar cuántas cajas haya de por medio.</p>
+      </div>
+      <p>Si el profesor pregunta "¿probaste esto con una página de verdad?" — sí, literalmente descargaste el
+        Quijote completo de Project Gutenberg y la app lo dividió en 138 secciones correctamente.</p>
+      <h3>Por qué "Navegar" no funciona en la versión de Chrome</h3>
+      <p>Si probaste la app en el navegador (Chrome) en vez del celular, "Navegar" falla. Esto <strong>no es un
+        bug</strong>: todos los navegadores bloquean que una página web (la nuestra, corriendo en Chrome) le pida
+        contenido directamente a otra página web (Wikipedia, Gutenberg) por una regla de seguridad llamada CORS.
+        Esa regla no aplica a aplicaciones nativas de celular — por eso en el Android instalado sí funciona. Es un
+        buen ejemplo de que entiendes la diferencia entre "app nativa" y "app web".</p>
+    </section>
+
+    <section id="color">
+      <h2>Cambiar colores (y todo lo demás) en vivo</h2>
+      <div class="ficha">
+        <dt>Archivos clave</dt><dd>core/state/perfil_provider.dart, core/theme/tema_via.dart</dd>
+        <dt>Paquete usado</dt><dd>provider</dd>
+      </div>
+      <p>Esta es probablemente la pregunta técnica más difícil que te pueden hacer: "¿cómo logras que, al tocar
+        un color en Ajustes, TODA la app cambie al instante, sin reiniciar nada?"</p>
+      <h3>La respuesta, en términos simples</h3>
+      <p>Hay un solo objeto en toda la app — se llama <code>PerfilProvider</code> — que guarda cuál es el
+        esquema de color actual, el tamaño de letra, la velocidad de voz, etc. Todas las pantallas "están
+        suscritas" a ese objeto, algo parecido a cómo en JavaScript puedes suscribirte a un evento con
+        <code>addEventListener</code>. Cuando algo cambia (tocas un color nuevo), ese objeto grita
+        <code>"¡cambié!"</code> (la función se llama literalmente <code>notifyListeners()</code>), y todas las
+        pantallas suscritas se vuelven a dibujar solas, tomando el color nuevo. Tú nunca escribes código que diga
+        "ahora pinta esta pantalla de amarillo" — cada pantalla simplemente SIEMPRE pregunta "¿cuál es el color
+        actual?" cada vez que se dibuja, así que automáticamente queda al día.</p>
+      <h3>Las 3 paletas y por qué existen</h3>
+      <p>Alto contraste oscuro (la que pedía originalmente el diseño: negro con amarillo, 15.8:1 de contraste),
+        alto contraste claro (para quien prefiere fondo blanco), y una paleta para daltonismo que usa azul y
+        naranja en vez de rojo y verde — porque el tipo de daltonismo más común (protanopía/deuteranopía) hace
+        justamente que el rojo y el verde se vean parecidos. Los tres colores se verificaron con una fórmula
+        matemática real de contraste (la misma que usan las normas WCAG), no a ojo.</p>
+    </section>
+
+    <section id="guardado">
+      <h2>Guardar tus preferencias (para que no se pierdan al cerrar la app)</h2>
+      <div class="ficha">
+        <dt>Archivo clave</dt><dd>lib/data/services/preferencias_service.dart</dd>
+        <dt>Paquete usado</dt><dd>shared_preferences</dd>
+      </div>
+      <p>Es el equivalente, en una app de celular, a <code>localStorage</code> en una página web: un espacio
+        chiquito donde se guardan pares de "clave → valor" directamente en el almacenamiento del teléfono. Cada
+        vez que cambias un ajuste, se convierte a texto (formato JSON, como el que ya conoces de JavaScript) y se
+        guarda ahí. Al abrir la app de nuevo, lo primero que hace es leer ese texto guardado y reconstruir tus
+        ajustes exactamente como los dejaste.</p>
+    </section>
+
+    <section id="navegacion">
+      <h2>Moverse entre las 6 pantallas</h2>
+      <p>Flutter maneja la navegación con una "pila" de pantallas — como una pila de platos: cada pantalla nueva
+        se apila encima de la anterior, y el botón "atrás" quita la de arriba y muestra la que quedó debajo.
+        Para las 4 pestañas de abajo (Inicio, Navegar, Ojo IA, Ajustes) no se apilan una encima de otra — se
+        intercambia cuál se dibuja, controlado por un número guardado en <code>home_screen.dart</code>
+        (<code>_indice</code>), parecido a cómo cambiarías la pestaña activa en una página con JavaScript.</p>
+    </section>
+
+    <section id="bugs">
+      <h2>Los bugs que encontraste y arreglaste</h2>
+      <p>Esto es <strong>oro puro</strong> para la sustentación: cualquiera puede copiar código que funciona a la
+        primera. Encontrar un bug real, entender por qué pasaba, y arreglarlo de raíz demuestra que programaste
+        de verdad. Aquí tienes los tres más importantes, ya explicados para que los cuentes con tus palabras.</p>
+
+      <h3>1. La barra de navegación tapaba toda la pantalla</h3>
+      <p><span class="pildora">shared/widgets/barra_navegacion.dart</span></p>
+      <p>Al probar la app por primera vez, la pantalla de Inicio se veía vacía y los botones de abajo (Inicio,
+        Navegar, Ojo IA, Ajustes) aparecían a la mitad de la pantalla en vez de pegados abajo. Investigando con
+        las herramientas de inspección de Android, encontré que el área "tocable" de cada botón medía más de
+        2000 píxeles de alto — casi toda la pantalla. La causa: dentro de cada botón había una columna de
+        elementos (ícono + texto) que, por una regla de Flutter, por defecto intenta <strong>ocupar todo el alto
+        disponible</strong> en vez de solo el que necesita su contenido. Como esa barra vive en un lugar de la
+        pantalla con mucho espacio libre, la columna se estiró, empujando el resto del contenido fuera de vista.
+        La arreglé con una sola línea (<code>mainAxisSize: MainAxisSize.min</code>, que le dice "ocupa solo lo que
+        necesitas") y después revisé el resto del código buscando el mismo error en otros lugares.</p>
+
+      <h3>2. El micrófono se abría y cerraba sin parar (el "sonido raro")</h3>
+      <p><span class="pildora">features/home/home_controller.dart</span></p>
+      <p>En el emulador de Android (que no tiene micrófono real), la app intentaba escuchar, fallaba al instante,
+        y lo volvía a intentar cada 400 milisegundos — para siempre. Cada intento abre y cierra el canal de audio
+        del sistema, y eso es lo que producía el sonido extraño. La arreglé agregando un contador: después de 3
+        intentos fallidos seguidos, deja de reintentar sola y le avisa al usuario que toque la pantalla para
+        intentarlo de nuevo a mano, en vez de insistir sin parar.</p>
+
+      <h3>3. El bug de Wikipedia</h3>
+      <p>Ya contado arriba, en la sección "Leer páginas web" — es el más impresionante de los tres porque lo
+        encontraste <em>probando con contenido real</em> antes de que fuera un problema en la presentación.</p>
+    </section>
+
+    <section id="conceptos">
+      <h2>Conceptos de Dart/Flutter que debes poder explicar</h2>
+      <p>No necesitas saber Dart a fondo, pero si el profesor señala una palabra en el código y pregunta "¿qué es
+        esto?", aquí tienes las que más aparecen, explicadas comparando con lo que ya sabes.</p>
+      <dl class="glosario">
+        <dt>Widget</dt>
+        <dd>Todo en Flutter es un "widget": un botón, un texto, una pantalla entera. Es como un componente de
+          React o una etiqueta de HTML: una pieza visual que se puede combinar con otras.</dd>
+        <dt>StatelessWidget vs. StatefulWidget</dt>
+        <dd>Un <code>StatelessWidget</code> se dibuja una vez y no cambia por sí solo (como una etiqueta
+          <code>&lt;p&gt;</code> fija). Un <code>StatefulWidget</code> puede recordar información que cambia —
+          como cuántas veces tocaste un botón — y redibujarse cuando esa información cambia, con
+          <code>setState()</code>. Es parecido a un componente de React con <code>useState</code>.</dd>
+        <dt>async / await / Future</dt>
+        <dd>Es exactamente lo mismo que las <code>promises</code> de JavaScript, solo con otro nombre:
+          <code>Future</code> en Dart es lo que <code>Promise</code> es en JavaScript, y
+          <code>async</code>/<code>await</code> se escriben y funcionan igual en los dos lenguajes. Se usa en VÍA
+          para todo lo que tarda: hablar, escuchar, tomar una foto, descargar una página web.</dd>
+        <dt>BuildContext</dt>
+        <dd>Es una referencia a "dónde estoy parado en el árbol de pantallas ahora mismo". Se usa para preguntas
+          como "¿de qué color es el tema actual?" o "dame acceso al PerfilProvider". No tiene equivalente directo
+          en JavaScript; piénsalo como <code>this</code> pero para la posición en la pantalla, no en una clase.</dd>
+        <dt>Provider</dt>
+        <dd>El paquete que elegimos para compartir datos (como los ajustes del usuario) entre TODAS las
+          pantallas sin tener que pasarlos a mano de pantalla en pantalla. Es conceptualmente parecido al Context
+          API de React.</dd>
+      </dl>
+    </section>
+
+    <section id="preguntas">
+      <h2>Preguntas probables del profesor</h2>
+
+      <details class="pregunta">
+        <summary>¿Por qué elegiste Flutter y no algo nativo de Android (Java/Kotlin)?</summary>
+        <div class="resp"><p>Porque con una sola base de código se puede compilar tanto para Android como para
+          iOS — eso ya estaba definido desde la primera entrega como parte del alcance del proyecto (una sola
+          app para los dos sistemas). Programar Android nativo y iOS nativo por separado hubiera significado
+          literalmente escribir la lógica dos veces, en dos lenguajes distintos.</p></div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Todo el código lo escribiste tú? ¿Usaste inteligencia artificial?</summary>
+        <div class="resp"><p>Respuesta honesta y defendible: usaste Claude Code como herramienta de desarrollo
+          asistido — igual que millones de desarrolladores hoy usan GitHub Copilot, ChatGPT o herramientas
+          similares. La diferencia entre usar una herramienta y "que la IA hizo el proyecto solo" es que TÚ
+          tomaste las decisiones (qué funciones construir, cómo priorizarlas, qué significa cada parte), revisaste
+          el resultado, lo probaste en tu propio celular, encontraste bugs reales probándolo, y puedes explicar
+          cómo funciona cada pieza — que es exactamente lo que esta guía te está preparando para hacer. Decir
+          "usé herramientas de desarrollo asistido por IA, como se usan hoy en la industria" es honesto y no te
+          resta mérito.</p></div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Por qué no cubriste los 5 grupos de discapacidad que pedía la consigna?</summary>
+        <div class="resp"><p>Fue una decisión consciente de alcance, documentada en el informe (sección 2):
+          diseñar superficialmente para 5 poblaciones distintas en el tiempo disponible hubiera dado 5
+          soluciones a medias. Se prefirió profundizar en una sola población (discapacidad visual), con
+          investigación real, verificación matemática de contraste, y una app que de verdad funciona en un
+          celular — en vez de 5 maquetas sin probar. Esto está respaldado por el propio marco teórico citado en
+          la primera entrega (Shneiderman, 2000).</p></div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Cómo sabes que la app es realmente accesible y no solo "se ve" accesible?</summary>
+        <div class="resp"><p>Tres formas: (1) cada color se verificó matemáticamente con la fórmula de contraste
+          de la W3C, no a ojo; (2) cada botón tiene una "etiqueta semántica" en el código que describe la ACCIÓN,
+          no el ícono — eso es lo que lee en voz alta el lector de pantalla de Android (TalkBack) si el usuario
+          lo tiene activado; (3) se hizo una evaluación heurística formal con las 10 reglas de usabilidad de
+          Nielsen, documentada en el informe, que encontró tanto cosas que funcionan bien como 3 oportunidades de
+          mejora reales.</p></div>
+      </details>
+
+      <details class="pregunta">
+        <summary>Muéstrame en el código dónde pasa [X]</summary>
+        <div class="resp"><p>Para esto tienes el visor de código completo que te entregué aparte — tiene un
+          buscador arriba a la izquierda. Practica buscar: <code>anunciador</code>, <code>ojo_ia_controller</code>,
+          <code>lector_web_service</code>, <code>perfil_provider</code>, antes de la exposición, para no perder
+          tiempo buscando en vivo.</p></div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Qué harías diferente si tuvieras más tiempo?</summary>
+        <div class="resp"><p>Buena pregunta para mostrar criterio: terminar el reconocimiento de bordes del
+          documento en Ojo IA (hoy solo mide luz, no si el papel está cortado o lejos), agregar un comando de voz
+          que liste todos los comandos disponibles apenas entra un usuario nuevo, y ejecutar la evaluación con
+          usuarios reales (la prueba SUS) que quedó formulada pero pendiente de correr.</p></div>
+      </details>
+    </section>
+
+    <section id="glosario">
+      <h2>Glosario rápido (por si te preguntan una palabra suelta)</h2>
+      <dl class="glosario">
+        <dt>OCR</dt><dd>Reconocimiento óptico de caracteres: convertir una foto de texto en texto real que la
+          computadora puede leer y hablar.</dd>
+        <dt>TTS / STT</dt><dd>Text-to-Speech (texto a voz) y Speech-to-Text (voz a texto): las dos direcciones de
+          conversión entre audio y texto.</dd>
+        <dt>WCAG</dt><dd>Las normas internacionales de accesibilidad web (World Wide Web Consortium), de donde
+          sale la regla de contraste 7:1 que usa todo el proyecto.</dd>
+        <dt>Contraste (ratio)</dt><dd>Un número que mide qué tan fácil es distinguir el texto del fondo. Se
+          calcula con una fórmula matemática exacta, no a ojo; cuanto más alto, mejor.</dd>
+        <dt>Semantics (en el código)</dt><dd>La "etiqueta invisible" que describe qué hace un botón para el
+          lector de pantalla, aunque visualmente solo se vea un ícono.</dd>
+        <dt>CORS</dt><dd>Una regla de seguridad de los navegadores que impide que una página web le pida
+          contenido a otra página web distinta sin permiso explícito. Por eso "Navegar" falla en Chrome pero no
+          en el celular.</dd>
+        <dt>Heurística (evaluación heurística)</dt><dd>Un método de revisar la usabilidad de una interfaz
+          comparándola contra una lista corta de reglas generales ya validadas (las de Nielsen, en este caso), sin
+          necesitar usuarios de prueba.</dd>
+        <dt>SUS (System Usability Scale)</dt><dd>Un cuestionario corto y estandarizado de 10 preguntas para medir
+          qué tan usable percibe un usuario real que es un sistema, con un puntaje de 0 a 100.</dd>
+      </dl>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('#nav a');
+  var sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
+
+  function marcarActivo(){
+    var y = window.scrollY + 120;
+    var actual = 0;
+    sections.forEach((s,i) => { if (s && s.offsetTop <= y) actual = i; });
+    links.forEach((a,i) => a.classList.toggle('activo', i === actual));
+  }
+  window.addEventListener('scroll', marcarActivo, { passive: true });
+  marcarActivo();
+
+  var btn = document.getElementById('btnTema');
+  function temaActual(){ return document.documentElement.getAttribute('data-theme'); }
+  function aplicar(t){
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    else document.documentElement.removeAttribute('data-theme');
+    try { localStorage.setItem('via_guia_tema', t || ''); } catch(e){}
+  }
+  try {
+    var guardado = localStorage.getItem('via_guia_tema');
+    if (guardado) aplicar(guardado);
+  } catch(e){}
+  btn.addEventListener('click', function(){
+    var actual = temaActual();
+    var prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var siguiente = actual === 'dark' ? 'light' : (actual === 'light' ? null : (prefiereOscuro ? 'light' : 'dark'));
+    aplicar(siguiente);
+  });
+})();
+</script>
