@@ -1,0 +1,1041 @@
+{
+  "aviso": "DATOS SIMULADOS - no provienen de personas reales",
+  "semilla": 20261104,
+  "perfiles": {
+    "CT": "Ceguera total",
+    "BV": "Baja visión",
+    "AM": "Adulto mayor",
+    "CB": "Conocimientos tecnológicos básicos / dificultad cognitiva leve"
+  },
+  "participantes": [
+    {
+      "id": "P01",
+      "perfil": "CT",
+      "edad": 34,
+      "efecto": 0.29965293354405614,
+      "resp": [
+        5,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 54,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 26,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 68,
+          "errores": 2,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 114,
+          "errores": 3,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "perfil": "CT",
+      "edad": 41,
+      "efecto": 0.19447555521445464,
+      "resp": [
+        5,
+        5,
+        4,
+        5,
+        4,
+        5,
+        3,
+        5,
+        5,
+        5
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 50,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 28,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 67,
+          "errores": 2,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 119,
+          "errores": 1,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P03",
+      "perfil": "CT",
+      "edad": 52,
+      "efecto": 0.1648352838252754,
+      "resp": [
+        5,
+        4,
+        4,
+        4,
+        3,
+        5,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 52,
+          "errores": 2,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 20,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 80,
+          "errores": 0,
+          "exito": 0
+        },
+        {
+          "esc": "E4",
+          "tiempo": 150,
+          "errores": 2,
+          "exito": 0
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "perfil": "BV",
+      "edad": 29,
+      "efecto": -0.6081266075426269,
+      "resp": [
+        4,
+        3,
+        3,
+        3,
+        4,
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 37,
+          "errores": 0,
+          "exito": 0
+        },
+        {
+          "esc": "E2",
+          "tiempo": 29,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 46,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 49,
+          "errores": 0,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "perfil": "BV",
+      "edad": 47,
+      "efecto": 0.04495565393896645,
+      "resp": [
+        5,
+        4,
+        2,
+        4,
+        5,
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 37,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 22,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 44,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 60,
+          "errores": 0,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P06",
+      "perfil": "BV",
+      "edad": 58,
+      "efecto": 0.01820326039442539,
+      "resp": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 37,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 18,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 27,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 86,
+          "errores": 0,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P07",
+      "perfil": "AM",
+      "edad": 67,
+      "efecto": -0.48791270696490746,
+      "resp": [
+        4,
+        4,
+        3,
+        4,
+        5,
+        3,
+        3,
+        3,
+        4,
+        3
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 62,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 40,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 84,
+          "errores": 2,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 63,
+          "errores": 2,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P08",
+      "perfil": "AM",
+      "edad": 71,
+      "efecto": 0.62285281336637,
+      "resp": [
+        4,
+        4,
+        3,
+        5,
+        4,
+        5,
+        4,
+        5,
+        5,
+        5
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 58,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 21,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 70,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 97,
+          "errores": 1,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P09",
+      "perfil": "AM",
+      "edad": 74,
+      "efecto": -0.19378500314031355,
+      "resp": [
+        3,
+        2,
+        3,
+        4,
+        4,
+        5,
+        2,
+        4,
+        5,
+        3
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 57,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 40,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 64,
+          "errores": 2,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 75,
+          "errores": 2,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P10",
+      "perfil": "CB",
+      "edad": 26,
+      "efecto": 0.08774674424796078,
+      "resp": [
+        4,
+        5,
+        3,
+        5,
+        4,
+        3,
+        4,
+        4,
+        4,
+        3
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 51,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 39,
+          "errores": 1,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 40,
+          "errores": 1,
+          "exito": 0
+        },
+        {
+          "esc": "E4",
+          "tiempo": 67,
+          "errores": 2,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P11",
+      "perfil": "CB",
+      "edad": 38,
+      "efecto": -0.23861557740869166,
+      "resp": [
+        4,
+        4,
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 66,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 35,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 58,
+          "errores": 0,
+          "exito": 0
+        },
+        {
+          "esc": "E4",
+          "tiempo": 87,
+          "errores": 1,
+          "exito": 1
+        }
+      ]
+    },
+    {
+      "id": "P12",
+      "perfil": "CB",
+      "edad": 45,
+      "efecto": 0.13972345798525274,
+      "resp": [
+        4,
+        3,
+        4,
+        5,
+        4,
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tareas": [
+        {
+          "esc": "E1",
+          "tiempo": 56,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E2",
+          "tiempo": 27,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E3",
+          "tiempo": 44,
+          "errores": 0,
+          "exito": 1
+        },
+        {
+          "esc": "E4",
+          "tiempo": 121,
+          "errores": 0,
+          "exito": 1
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "n": 1,
+      "corto": "Configurar el perfil",
+      "texto": "Configurar mi perfil de accesibilidad al iniciar la aplicación fue fácil.",
+      "principio": "Operable",
+      "indicador": "Facilidad de uso",
+      "obj": "O3"
+    },
+    {
+      "n": 2,
+      "corto": "Uso solo con voz",
+      "texto": "Pude usar la aplicación únicamente con comandos de voz.",
+      "principio": "Operable",
+      "indicador": "Facilidad de uso",
+      "obj": "O3"
+    },
+    {
+      "n": 3,
+      "corto": "Reconoce mi voz",
+      "texto": "La aplicación reconoció correctamente lo que le dije.",
+      "principio": "Robusto",
+      "indicador": "Errores",
+      "obj": "O3"
+    },
+    {
+      "n": 4,
+      "corto": "Voz clara y veloz",
+      "texto": "Las instrucciones habladas son claras y la velocidad de la voz es adecuada.",
+      "principio": "Comprensible",
+      "indicador": "Facilidad de uso",
+      "obj": "O3"
+    },
+    {
+      "n": 5,
+      "corto": "Lector de páginas",
+      "texto": "El lector leyó correctamente el contenido de páginas web y documentos.",
+      "principio": "Perceptible",
+      "indicador": "Facilidad de uso",
+      "obj": "O3"
+    },
+    {
+      "n": 6,
+      "corto": "Texto y contraste",
+      "texto": "El tamaño del texto y el contraste de colores facilitan la lectura.",
+      "principio": "Perceptible",
+      "indicador": "Facilidad de uso",
+      "obj": "O3"
+    },
+    {
+      "n": 7,
+      "corto": "Cámara Ojo IA",
+      "texto": "La cámara (Ojo IA) me guió bien y reconoció el texto del documento.",
+      "principio": "Perceptible",
+      "indicador": "Errores",
+      "obj": "O3"
+    },
+    {
+      "n": 8,
+      "corto": "Modo simplificado",
+      "texto": "El modo simplificado hace la aplicación más fácil de usar.",
+      "principio": "Comprensible",
+      "indicador": "Facilidad de uso",
+      "obj": "O3"
+    },
+    {
+      "n": 9,
+      "corto": "Ayuda ante errores",
+      "texto": "Cuando me equivoqué, la aplicación me ayudó a corregirlo.",
+      "principio": "Comprensible",
+      "indicador": "Errores",
+      "obj": "O3"
+    },
+    {
+      "n": 10,
+      "corto": "Autonomía y uso diario",
+      "texto": "VÍA me permite acceder de forma autónoma a la información digital y la usaría a diario.",
+      "principio": "General",
+      "indicador": "Satisfacción",
+      "obj": "OG"
+    }
+  ],
+  "escenarios": [
+    {
+      "id": "E1",
+      "nombre": "Escuchar un documento con lectura automática"
+    },
+    {
+      "id": "E2",
+      "nombre": "Dar una orden por voz y llegar a la pantalla correcta"
+    },
+    {
+      "id": "E3",
+      "nombre": "Activar opciones de accesibilidad (modo simplificado y tamaño de letra)"
+    },
+    {
+      "id": "E4",
+      "nombre": "Leer un recibo impreso con la cámara (Ojo IA)"
+    }
+  ],
+  "itemsStats": [
+    {
+      "n": 1,
+      "corto": "Configurar el perfil",
+      "texto": "Configurar mi perfil de accesibilidad al iniciar la aplicación fue fácil.",
+      "principio": "Operable",
+      "indicador": "Facilidad de uso",
+      "media": 4.25,
+      "de": 0.62,
+      "mediana": 4,
+      "dist": [
+        0,
+        0,
+        1,
+        7,
+        4
+      ],
+      "acuerdo": 91.7,
+      "desacuerdo": 0,
+      "porPerfil": {
+        "CT": 5,
+        "BV": 4.33,
+        "AM": 3.67,
+        "CB": 4
+      }
+    },
+    {
+      "n": 2,
+      "corto": "Uso solo con voz",
+      "texto": "Pude usar la aplicación únicamente con comandos de voz.",
+      "principio": "Operable",
+      "indicador": "Facilidad de uso",
+      "media": 3.75,
+      "de": 0.87,
+      "mediana": 4,
+      "dist": [
+        0,
+        1,
+        3,
+        6,
+        2
+      ],
+      "acuerdo": 66.7,
+      "desacuerdo": 8.3,
+      "porPerfil": {
+        "CT": 4,
+        "BV": 3.67,
+        "AM": 3.33,
+        "CB": 4
+      }
+    },
+    {
+      "n": 3,
+      "corto": "Reconoce mi voz",
+      "texto": "La aplicación reconoció correctamente lo que le dije.",
+      "principio": "Robusto",
+      "indicador": "Errores",
+      "media": 3.33,
+      "de": 0.65,
+      "mediana": 3,
+      "dist": [
+        0,
+        1,
+        6,
+        5,
+        0
+      ],
+      "acuerdo": 41.7,
+      "desacuerdo": 8.3,
+      "porPerfil": {
+        "CT": 4,
+        "BV": 3,
+        "AM": 3,
+        "CB": 3.33
+      }
+    },
+    {
+      "n": 4,
+      "corto": "Voz clara y veloz",
+      "texto": "Las instrucciones habladas son claras y la velocidad de la voz es adecuada.",
+      "principio": "Comprensible",
+      "indicador": "Facilidad de uso",
+      "media": 4.33,
+      "de": 0.65,
+      "mediana": 4,
+      "dist": [
+        0,
+        0,
+        1,
+        6,
+        5
+      ],
+      "acuerdo": 91.7,
+      "desacuerdo": 0,
+      "porPerfil": {
+        "CT": 4.67,
+        "BV": 3.67,
+        "AM": 4.33,
+        "CB": 4.67
+      }
+    },
+    {
+      "n": 5,
+      "corto": "Lector de páginas",
+      "texto": "El lector leyó correctamente el contenido de páginas web y documentos.",
+      "principio": "Perceptible",
+      "indicador": "Facilidad de uso",
+      "media": 4.17,
+      "de": 0.58,
+      "mediana": 4,
+      "dist": [
+        0,
+        0,
+        1,
+        8,
+        3
+      ],
+      "acuerdo": 91.7,
+      "desacuerdo": 0,
+      "porPerfil": {
+        "CT": 4,
+        "BV": 4.33,
+        "AM": 4.33,
+        "CB": 4
+      }
+    },
+    {
+      "n": 6,
+      "corto": "Texto y contraste",
+      "texto": "El tamaño del texto y el contraste de colores facilitan la lectura.",
+      "principio": "Perceptible",
+      "indicador": "Facilidad de uso",
+      "media": 4.25,
+      "de": 0.87,
+      "mediana": 4.5,
+      "dist": [
+        0,
+        0,
+        3,
+        3,
+        6
+      ],
+      "acuerdo": 75,
+      "desacuerdo": 0,
+      "porPerfil": {
+        "CT": 4.67,
+        "BV": 4,
+        "AM": 4.33,
+        "CB": 4
+      }
+    },
+    {
+      "n": 7,
+      "corto": "Cámara Ojo IA",
+      "texto": "La cámara (Ojo IA) me guió bien y reconoció el texto del documento.",
+      "principio": "Perceptible",
+      "indicador": "Errores",
+      "media": 3.58,
+      "de": 0.79,
+      "mediana": 4,
+      "dist": [
+        0,
+        1,
+        4,
+        6,
+        1
+      ],
+      "acuerdo": 58.3,
+      "desacuerdo": 8.3,
+      "porPerfil": {
+        "CT": 3,
+        "BV": 4.33,
+        "AM": 3,
+        "CB": 4
+      }
+    },
+    {
+      "n": 8,
+      "corto": "Modo simplificado",
+      "texto": "El modo simplificado hace la aplicación más fácil de usar.",
+      "principio": "Comprensible",
+      "indicador": "Facilidad de uso",
+      "media": 4.17,
+      "de": 0.58,
+      "mediana": 4,
+      "dist": [
+        0,
+        0,
+        1,
+        8,
+        3
+      ],
+      "acuerdo": 91.7,
+      "desacuerdo": 0,
+      "porPerfil": {
+        "CT": 4.33,
+        "BV": 4,
+        "AM": 4,
+        "CB": 4.33
+      }
+    },
+    {
+      "n": 9,
+      "corto": "Ayuda ante errores",
+      "texto": "Cuando me equivoqué, la aplicación me ayudó a corregirlo.",
+      "principio": "Comprensible",
+      "indicador": "Errores",
+      "media": 4.17,
+      "de": 0.72,
+      "mediana": 4,
+      "dist": [
+        0,
+        0,
+        2,
+        6,
+        4
+      ],
+      "acuerdo": 83.3,
+      "desacuerdo": 0,
+      "porPerfil": {
+        "CT": 4.67,
+        "BV": 3.67,
+        "AM": 4.67,
+        "CB": 3.67
+      }
+    },
+    {
+      "n": 10,
+      "corto": "Autonomía y uso diario",
+      "texto": "VÍA me permite acceder de forma autónoma a la información digital y la usaría a diario.",
+      "principio": "General",
+      "indicador": "Satisfacción",
+      "media": 4.33,
+      "de": 0.89,
+      "mediana": 5,
+      "dist": [
+        0,
+        0,
+        3,
+        2,
+        7
+      ],
+      "acuerdo": 75,
+      "desacuerdo": 0,
+      "porPerfil": {
+        "CT": 4.67,
+        "BV": 4.67,
+        "AM": 3.67,
+        "CB": 4.33
+      }
+    }
+  ],
+  "escStats": [
+    {
+      "id": "E1",
+      "nombre": "Escuchar un documento con lectura automática",
+      "tiempo": 51.4,
+      "deTiempo": 9.8,
+      "errores": 0.5,
+      "exito": 91.7,
+      "porPerfil": {
+        "CT": {
+          "tiempo": 52,
+          "errores": 1,
+          "exito": 100
+        },
+        "BV": {
+          "tiempo": 37,
+          "errores": 0,
+          "exito": 67
+        },
+        "AM": {
+          "tiempo": 59,
+          "errores": 0.67,
+          "exito": 100
+        },
+        "CB": {
+          "tiempo": 58,
+          "errores": 0.33,
+          "exito": 100
+        }
+      }
+    },
+    {
+      "id": "E2",
+      "nombre": "Dar una orden por voz y llegar a la pantalla correcta",
+      "tiempo": 28.8,
+      "deTiempo": 8,
+      "errores": 0.5,
+      "exito": 100,
+      "porPerfil": {
+        "CT": {
+          "tiempo": 25,
+          "errores": 0.33,
+          "exito": 100
+        },
+        "BV": {
+          "tiempo": 23,
+          "errores": 1,
+          "exito": 100
+        },
+        "AM": {
+          "tiempo": 34,
+          "errores": 0.33,
+          "exito": 100
+        },
+        "CB": {
+          "tiempo": 34,
+          "errores": 0.33,
+          "exito": 100
+        }
+      }
+    },
+    {
+      "id": "E3",
+      "nombre": "Activar opciones de accesibilidad (modo simplificado y tamaño de letra)",
+      "tiempo": 57.7,
+      "deTiempo": 17.4,
+      "errores": 0.75,
+      "exito": 75,
+      "porPerfil": {
+        "CT": {
+          "tiempo": 72,
+          "errores": 1.33,
+          "exito": 67
+        },
+        "BV": {
+          "tiempo": 39,
+          "errores": 0,
+          "exito": 100
+        },
+        "AM": {
+          "tiempo": 73,
+          "errores": 1.33,
+          "exito": 100
+        },
+        "CB": {
+          "tiempo": 47,
+          "errores": 0.33,
+          "exito": 33
+        }
+      }
+    },
+    {
+      "id": "E4",
+      "nombre": "Leer un recibo impreso con la cámara (Ojo IA)",
+      "tiempo": 90.7,
+      "deTiempo": 30.3,
+      "errores": 1.17,
+      "exito": 91.7,
+      "porPerfil": {
+        "CT": {
+          "tiempo": 128,
+          "errores": 2,
+          "exito": 67
+        },
+        "BV": {
+          "tiempo": 65,
+          "errores": 0,
+          "exito": 100
+        },
+        "AM": {
+          "tiempo": 78,
+          "errores": 1.67,
+          "exito": 100
+        },
+        "CB": {
+          "tiempo": 92,
+          "errores": 1,
+          "exito": 100
+        }
+      }
+    }
+  ],
+  "global": {
+    "exito": 89.6,
+    "errores": 0.73,
+    "tiempo": 57.1,
+    "likertGlobal": 4.03,
+    "alfa": 0.66,
+    "n": 12,
+    "acuerdoGlobal": 76.7
+  },
+  "indicadores": {
+    "Facilidad de uso": 4.15,
+    "Errores": 3.69,
+    "Satisfacción": 4.33
+  },
+  "principios": {
+    "Operable": 4,
+    "Robusto": 3.33,
+    "Comprensible": 4.22,
+    "Perceptible": 4,
+    "General": 4.33
+  },
+  "porPerfilGlobal": {
+    "CT": 4.3,
+    "BV": 3.97,
+    "AM": 3.83,
+    "CB": 4.03
+  }
+}

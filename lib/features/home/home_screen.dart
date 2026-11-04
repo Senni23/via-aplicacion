@@ -66,7 +66,17 @@ class _HomeScreenState extends State<HomeScreen> {
       case ComandoVia.ayudaComandos:
         anunciador.anunciar(
           'Comandos disponibles: leer documento, ojo IA, ajustes, inicio, '
-          'repetir, parar, más rápido, más lento, y ayuda humana.',
+          'repetir, parar, más rápido, más lento, modo simple, y ayuda humana.',
+        );
+        break;
+      case ComandoVia.modoSimple:
+        final provider = _controlador.perfilProvider;
+        final activar = !provider.ajustes.modoSimplificado;
+        provider.alternarModoSimplificado(activar);
+        anunciador.anunciar(
+          activar
+              ? 'Modo simplificado activado. Menos opciones y letra más grande.'
+              : 'Modo simplificado desactivado.',
         );
         break;
       case ComandoVia.masRapido:

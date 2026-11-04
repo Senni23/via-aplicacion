@@ -20,7 +20,7 @@ extension DescripcionEsquemaColor on EsquemaColor {
   String get descripcion {
     switch (this) {
       case EsquemaColor.altoContrasteOscuro:
-        return 'Fondo negro, texto blanco, acciones en amarillo · contraste 15.8:1';
+        return 'Fondo negro, texto blanco, acciones en amarillo · texto 19:1, acciones 13:1';
       case EsquemaColor.altoContrasteClaro:
         return 'Fondo blanco, texto oscuro · contraste 17.7:1';
       case EsquemaColor.daltonicoAzulNaranja:
@@ -75,8 +75,9 @@ class ColoresVia {
     required this.error,
   });
 
-  /// Contraste verificado (WCAG, relativo a `fondoApp`): texto 21:1 ·
-  /// accion 15.8:1 · info 11.4:1 · textoSuave 10.9:1.
+  /// Contraste medido por test (test/accesibilidad_test.dart, relativo a
+  /// `fondoApp`): texto 19.2:1 · accion 13.4:1 · info 10.8:1 · textoSuave
+  /// 10.7:1 · exito 11.8:1 · error 7.9:1. Todos superan el 7:1 del nivel AAA.
   static const oscuro = ColoresVia(
     fondoPrincipal: Color(0xFF000000),
     fondoApp: Color(0xFF0B0F14),

@@ -83,6 +83,12 @@ class PerfilProvider extends ChangeNotifier {
     await _guardar();
   }
 
+  Future<void> alternarModoSimplificado(bool valor) async {
+    _ajustes = _ajustes.copyWith(modoSimplificado: valor);
+    notifyListeners();
+    await _guardar();
+  }
+
   Future<void> _guardar() => _preferencias.guardarAjustes(_ajustes);
 
   Future<void> agregarAlHistorial(DocumentoLeido documento) async {

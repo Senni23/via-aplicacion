@@ -129,7 +129,10 @@ class OjoIaController {
       final foto = await camara!.takePicture();
       estado.value = EstadoOjoIa.leyendo;
       await perfilProvider.anunciador.anunciar('Leyendo el texto de la foto.');
-      final texto = await _ocr.reconocerTexto(foto.path);
+      final texto = await perfilProvider.anunciador.conAvisoDeEspera(
+        () => _ocr.reconocerTexto(foto.path),
+        mensaje: 'Sigo leyendo la foto, un momento.',
+      );
       textoLeido.value = texto.isEmpty
           ? 'No se reconoció texto en la foto. Intenta acercarte más o mejorar la luz.'
           : texto;

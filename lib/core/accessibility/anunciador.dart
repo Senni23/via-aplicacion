@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 import '../../data/services/tts_service.dart';
@@ -53,6 +55,23 @@ class Anunciador {
     // ignore: deprecated_member_use
     SemanticsService.announce(mensaje, TextDirection.ltr);
     await _tts.hablar(mensaje, interrumpir: interrumpir);
+  }
+
+  /// Ejecuta [tarea] y, mientras tarda, repite un aviso hablado cada [cada]
+  /// para que la persona sepa que la app sigue trabajando y no se colgó.
+  /// Una pantalla que se queda muda varios segundos es, para quien no ve,
+  /// indistinguible de una pantalla rota.
+  Future<T> conAvisoDeEspera<T>(
+    Future<T> Function() tarea, {
+    String mensaje = 'Un momento, sigo trabajando.',
+    Duration cada = const Duration(seconds: 4),
+  }) async {
+    final temporizador = Timer.periodic(cada, (_) => anunciar(mensaje));
+    try {
+      return await tarea();
+    } finally {
+      temporizador.cancel();
+    }
   }
 
   Future<void> detener() => _tts.detener();

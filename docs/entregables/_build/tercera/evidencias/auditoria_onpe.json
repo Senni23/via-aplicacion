@@ -1,0 +1,22 @@
+{
+  "url": "https://www.onpe.gob.pe",
+  "estado": 200,
+  "bytes": 277048,
+  "imagenes": 23,
+  "imagenesSinAlt": 0,
+  "imagenesAltVacio": 1,
+  "enlaces": 346,
+  "enlacesVacios": 15,
+  "camposDeFormulario": 1,
+  "camposSinEtiqueta": 0,
+  "encabezados": 71,
+  "declaraIdioma": true,
+  "lectorVia": {
+    "ok": true,
+    "titulo": "Oficina Nacional de Procesos Electorales - ONPE - Plataforma del Estado Peruano",
+    "secciones": 8,
+    "parrafos": 22,
+    "imagenesSinAltDetectadas": 1,
+    "caracteresLeibles": 1724
+  }
+}

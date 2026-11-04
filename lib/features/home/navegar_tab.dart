@@ -42,7 +42,10 @@ class _NavegarTabState extends State<NavegarTab> {
     final dominio = Uri.tryParse(url.contains('://') ? url : 'https://$url')?.host;
     await anunciador.anunciar('Abriendo ${dominio != null && dominio.isNotEmpty ? dominio : 'la página'}.');
     try {
-      final contenido = await _servicio.leerUrl(url);
+      final contenido = await anunciador.conAvisoDeEspera(
+        () => _servicio.leerUrl(url),
+        mensaje: 'Sigo abriendo la página, un momento.',
+      );
       if (!mounted) return;
       setState(() => _cargando = false);
       Navigator.of(context).push(
@@ -62,6 +65,7 @@ class _NavegarTabState extends State<NavegarTab> {
   @override
   Widget build(BuildContext context) {
     final c = context.coloresVia;
+    final simple = context.watch<PerfilProvider>().ajustes.modoSimplificado;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(TemaVia.margenLateral),
@@ -71,8 +75,10 @@ class _NavegarTabState extends State<NavegarTab> {
             Text('Navegar', style: Theme.of(context).textTheme.headlineLarge),
             const SizedBox(height: 6),
             Text(
-              'Escribe una dirección web y VÍA la reconstruye en modo accesible: '
-              'con jerarquía de encabezados y contraste de 7:1 o más.',
+              simple
+                  ? 'Escribe una dirección web y VÍA te la lee.'
+                  : 'Escribe una dirección web y VÍA la reconstruye en modo accesible: '
+                      'con jerarquía de encabezados y contraste de 7:1 o más.',
               style: TextStyle(color: c.textoSuave, fontSize: 15, height: 1.4),
             ),
             const SizedBox(height: 20),

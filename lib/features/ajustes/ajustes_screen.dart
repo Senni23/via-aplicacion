@@ -40,6 +40,7 @@ class _AjustesScreenState extends State<AjustesScreen> {
     final c = context.coloresVia;
     final provider = context.watch<PerfilProvider>();
     final ajustes = provider.ajustes;
+    final simple = ajustes.modoSimplificado;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Ajustes de accesibilidad')),
@@ -49,6 +50,22 @@ class _AjustesScreenState extends State<AjustesScreen> {
           children: [
             Text('Se aplican a todo el contenido', style: TextStyle(color: c.textoSuave)),
             const SizedBox(height: 18),
+
+            _tarjetaInterruptor(
+              context,
+              titulo: 'Modo simplificado',
+              descripcion: 'Menos opciones, textos más cortos y letra más grande',
+              valor: simple,
+              onChanged: (v) {
+                provider.alternarModoSimplificado(v);
+                provider.anunciador.anunciar(
+                  v
+                      ? 'Modo simplificado activado. Menos opciones y letra más grande.'
+                      : 'Modo simplificado desactivado.',
+                );
+              },
+            ),
+            const SizedBox(height: 10),
 
             _tituloSeccion(context, 'Perfil'),
             ...TipoPerfil.values.map((perfil) => Padding(
@@ -66,8 +83,8 @@ class _AjustesScreenState extends State<AjustesScreen> {
                   ),
                 )),
 
-            _tituloSeccion(context, 'Color e interfaz'),
-            ...EsquemaColor.values.map((esquema) => Padding(
+            if (!simple) _tituloSeccion(context, 'Color e interfaz'),
+            if (!simple) ...EsquemaColor.values.map((esquema) => Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: TarjetaAccesible(
                     emoji: esquema.emoji,
@@ -111,8 +128,8 @@ class _AjustesScreenState extends State<AjustesScreen> {
               ),
             ),
 
-            _tituloSeccion(context, 'Visualización'),
-            _tarjetaInterruptor(
+            if (!simple) _tituloSeccion(context, 'Visualización'),
+            if (!simple) _tarjetaInterruptor(
               context,
               titulo: 'Descripción de imágenes con IA',
               descripcion: 'Genera alt cuando la web no lo trae (Fase 11)',
@@ -122,7 +139,7 @@ class _AjustesScreenState extends State<AjustesScreen> {
                 provider.anunciador.anunciar('Descripción con IA ${v ? "activada" : "desactivada"}.');
               },
             ),
-            _tarjetaInterruptor(
+            if (!simple) _tarjetaInterruptor(
               context,
               titulo: 'Reducir animaciones',
               descripcion: 'Evita mareo y distracción',
@@ -135,8 +152,8 @@ class _AjustesScreenState extends State<AjustesScreen> {
               },
             ),
 
-            _tituloSeccion(context, 'Historial'),
-            Card(
+            if (!simple) _tituloSeccion(context, 'Historial'),
+            if (!simple) Card(
               child: ListTile(
                 leading: Icon(Icons.history_rounded, color: c.texto),
                 title: Text('Documentos leídos', style: TextStyle(color: c.texto)),
@@ -255,10 +272,13 @@ class _AjustesScreenState extends State<AjustesScreen> {
                 ],
               ),
             ),
-            Semantics(
-              label: '$titulo, ${valor ? "activado" : "desactivado"}',
-              toggled: valor,
-              child: Switch(value: valor, onChanged: onChanged),
+            // Un solo nodo para el lector de pantalla: la etiqueta se fusiona
+            // con el propio interruptor (que ya informa activado/desactivado).
+            MergeSemantics(
+              child: Semantics(
+                label: titulo,
+                child: Switch(value: valor, onChanged: onChanged),
+              ),
             ),
           ],
         ),

@@ -39,7 +39,8 @@ function titulo(slide, texto, opts = {}) {
   });
 }
 
-function pie(slide, n) {
+function pie(slide) {
+  const n = pres.slides.length;
   slide.addText(`VÍA · ${n}`, {
     x: 11.9, y: 7.12, w: 1.2, h: 0.3, isTextBox: true, margin: 0,
     fontFace: FONT_B, fontSize: 9, color: SOFT, align: "right",
@@ -76,9 +77,11 @@ const pres = nuevaPres();
   s.addText([
     { text: "Curso: ", options: { bold: true, color: SOFT } },
     { text: "Interacción entre Hombre y Máquina\n", options: { color: TXT } },
-    { text: "Integrantes: ", options: { bold: true, color: SOFT, breakLine: false } },
-    { text: "Enrique Sebastian Poma Nizama — U23200217", options: { color: TXT } },
-  ], { x: 0.9, y: 6.3, w: 10.5, h: 0.8, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 13, lineSpacingMultiple: 1.3 });
+    { text: "Integrantes: ", options: { bold: true, color: SOFT } },
+    { text: "Enrique Sebastian Poma Nizama — U23200217 · José Leonardo Rodríguez\n", options: { color: TXT } },
+    { text: "Docente: ", options: { bold: true, color: SOFT } },
+    { text: "David William Cota Sencara", options: { color: TXT } },
+  ], { x: 0.9, y: 5.75, w: 11.5, h: 1.3, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 13, lineSpacingMultiple: 1.3 });
 }
 
 // ============ 2. EL PROBLEMA EN NÚMEROS ============
@@ -103,7 +106,7 @@ const pres = nuevaPres();
   s.addText("VÍA no corrige la web ajena: corrige cómo esa web llega al usuario.", {
     x: 0.6, y: 5.85, w: 11.4, h: 0.6, isTextBox: true, margin: 0, fontFace: FONT_H, italic: true, fontSize: 18, color: TXT, align: "center",
   });
-  pie(s, 2);
+  pie(s);
 }
 
 // ============ 3. QUÉ ES VÍA ============
@@ -133,7 +136,7 @@ const pres = nuevaPres();
     s.addText(t, { x: x + 0.2, y: y + 0.75, w: 2.55, h: 0.4, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 13, color: TXT });
     s.addText(d, { x: x + 0.2, y: y + 1.15, w: 2.55, h: 0.5, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 10.5, color: SOFT, lineSpacingMultiple: 1.15 });
   });
-  pie(s, 3);
+  pie(s);
 }
 
 // ============ 4. DECISIÓN DE ALCANCE ============
@@ -159,10 +162,86 @@ const pres = nuevaPres();
   s.addText("Respaldo teórico: Shneiderman (2000) — interfaces multicapa sobre perfiles concretos, no un diseño único para un usuario \u201cpromedio\u201d inexistente.", {
     x: 0.6, y: 6.7, w: 11.8, h: 0.5, isTextBox: true, margin: 0, fontFace: FONT_B, italic: true, fontSize: 12, color: SOFT,
   });
-  pie(s, 4);
+  pie(s);
 }
 
-// ============ 5. METODOLOGÍA DCU ============
+// ============ 5. OBJETIVOS ============
+{
+  const s = pres.addSlide();
+  fondo(s);
+  kicker(s, "Objetivos");
+  titulo(s, "Qué buscamos lograr");
+
+  tarjeta(s, 0.6, 2.0, 5.2, 4.6, { fill: SURF, line: ACC });
+  s.addText("Objetivo general", { x: 0.95, y: 2.25, w: 4.5, h: 0.4, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 15, color: ACC });
+  s.addText("Proponer el diseño de una aplicación móvil que facilite el acceso autónomo a la información digital a las personas con discapacidad visual en el Perú, combinando síntesis de voz, visión por computador y adaptación automática de contenidos conforme a las pautas WCAG 2.2.", {
+    x: 0.95, y: 2.75, w: 4.5, h: 3.6, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 15, color: TXT, lineSpacingMultiple: 1.35,
+  });
+
+  s.addText("Objetivos específicos", { x: 6.2, y: 2.0, w: 6.4, h: 0.4, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 15, color: INFO });
+  const esp = [
+    "Identificar las barreras de accesibilidad digital que enfrentan las personas con discapacidad visual (revisión documental y entrevistas).",
+    "Definir los requisitos funcionales y no funcionales a partir del diseño universal y de WCAG 2.2.",
+    "Diseñar la arquitectura funcional y el prototipo de alta fidelidad, priorizando la voz y el alto contraste.",
+    "Evaluar la usabilidad del prototipo con usuarios: pruebas de tareas y escala SUS.",
+  ];
+  esp.forEach((t, i) => {
+    const y = 2.55 + i * 1.05;
+    s.addShape("ellipse", { x: 6.2, y: y + 0.05, w: 0.55, h: 0.55, fill: { color: SURF2 }, line: { color: INFO, width: 1.5 } });
+    s.addText(String(i + 1), { x: 6.2, y: y + 0.05, w: 0.55, h: 0.55, isTextBox: true, margin: 0, align: "center", valign: "middle", fontFace: FONT_H, bold: true, fontSize: 16, color: INFO });
+    s.addText(t, { x: 6.95, y, w: 5.75, h: 0.95, isTextBox: true, margin: 0, valign: "middle", fontFace: FONT_B, fontSize: 13, color: SOFT, lineSpacingMultiple: 1.2 });
+  });
+  pie(s);
+}
+
+// ============ 6. MARCO TEÓRICO ============
+{
+  const s = pres.addSlide();
+  fondo(s);
+  kicker(s, "Marco teórico");
+  titulo(s, "Cuatro bases que sustentan el diseño");
+
+  const bases = [
+    ["Diseño universal", "Story, Mueller y Mace (1998)", "Siete principios para que un producto sirva a la mayor cantidad de personas sin adaptaciones posteriores.", "VÍA entrega el mismo contenido íntegro por un canal distinto, y en modos redundantes: voz, contraste y vibración.", ACC],
+    ["Diseño centrado en el usuario", "Norman (2013)", "La usabilidad depende de las affordances, los significantes y la retroalimentación.", "Sin pantalla visible, cada acción se anuncia antes y se confirma después por voz y vibración.", INFO],
+    ["Usabilidad universal", "Shneiderman (2000)", "Interfaces multicapa que sirven a la diversidad de usuarios, en vez de un usuario «promedio» inexistente.", "Perfiles de accesibilidad y niveles de detalle: titulares, resumen o texto completo.", OK],
+    ["WCAG 2.2", "W3C (2023)", "Contenido perceptible, operable, comprensible y robusto: el estándar internacional.", "Es el criterio del analizador y también la norma que la propia interfaz debe cumplir.", SOFT],
+  ];
+  bases.forEach(([t, autor, teoria, enVia, c], i) => {
+    const x = 0.6 + i * 3.08;
+    tarjeta(s, x, 2.0, 2.85, 4.7, { fill: SURF });
+    s.addText(t, { x: x + 0.2, y: 2.2, w: 2.45, h: 0.7, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 15, color: c, valign: "top" });
+    s.addText(autor, { x: x + 0.2, y: 2.95, w: 2.45, h: 0.35, isTextBox: true, margin: 0, fontFace: FONT_B, italic: true, fontSize: 11, color: SOFT });
+    s.addText(teoria, { x: x + 0.2, y: 3.35, w: 2.45, h: 1.35, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12, color: TXT, lineSpacingMultiple: 1.2, valign: "top" });
+    s.addText("En VÍA", { x: x + 0.2, y: 4.8, w: 2.45, h: 0.3, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 11, color: c });
+    s.addText(enVia, { x: x + 0.2, y: 5.12, w: 2.45, h: 1.45, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 11.5, color: SOFT, lineSpacingMultiple: 1.2, valign: "top" });
+  });
+  pie(s);
+}
+
+// ============ 7. ESTADO DEL ARTE ============
+{
+  const s = pres.addSlide();
+  fondo(s);
+  kicker(s, "Estado del arte");
+  titulo(s, "Qué existe y qué brecha deja");
+
+  const cab = (t) => ({ text: t, options: { bold: true, color: BG, fill: { color: ACC }, fontFace: FONT_B, fontSize: 13 } });
+  const cel = (t, bold = false, color = SOFT) => ({ text: t, options: { bold, color, fill: { color: SURF }, fontFace: FONT_B, fontSize: 12 } });
+  s.addTable([
+    [cab("Antecedente"), cab("Brecha que persiste"), cab("Respuesta de VÍA")],
+    [cel("Bigham et al. (2010)\nVizWiz", true, TXT), cel("Depende de voluntarios disponibles de manera permanente; no escala ni opera sin conexión."), cel("La asistencia humana queda como respaldo excepcional; el modo sin conexión cubre las funciones básicas.")],
+    [cel("Gurari et al. (2018)\nVizWiz Grand Challenge", true, TXT), cel("El 28 % de las fotografías tomadas por usuarios ciegos resulta ininterpretable por problemas de captura."), cel("La cámara guía por voz el encuadre y la iluminación antes de disparar, no después.")],
+    [cel("Adnin y Das (2024)\nIA generativa y usuarios ciegos", true, TXT), cel("Las propias interfaces de IA no son accesibles y sus respuestas contienen sesgos capacitistas."), cel("Interfaz diseñada conforme a WCAG 2.2 desde el inicio; descripciones en lenguaje neutro.")],
+  ], { x: 0.6, y: 2.0, w: 12.1, colW: [3.0, 4.6, 4.5], border: { type: "solid", color: BORDE, pt: 1 }, margin: [0.12, 0.15, 0.12, 0.15], valign: "middle" });
+
+  s.addText("Cada módulo de VÍA responde a una limitación documentada en la literatura revisada.", {
+    x: 0.6, y: 6.15, w: 12.1, h: 0.5, isTextBox: true, margin: 0, fontFace: FONT_H, italic: true, fontSize: 16, color: TXT, align: "center",
+  });
+  pie(s);
+}
+
+// ============ 8. METODOLOGÍA DCU ============
 {
   const s = pres.addSlide();
   fondo(s);
@@ -173,7 +252,7 @@ const pres = nuevaPres();
     ["1", "Empatizar", "Revisión de literatura sobre accesibilidad para personas ciegas"],
     ["2", "Definir", "22 requisitos funcionales y 11 no funcionales"],
     ["3", "Idear", "Sistema de diseño con contraste verificado matemáticamente"],
-    ["4", "Prototipar", "De maqueta a prototipo navegable en Flutter"],
+    ["4", "Prototipar", "Prototipo de alta fidelidad de seis pantallas"],
     ["5", "Evaluar", "Heurísticas de Nielsen + protocolo SUS"],
   ];
   etapas.forEach(([n, t, d], i) => {
@@ -189,42 +268,44 @@ const pres = nuevaPres();
   s.addText("De las cinco, la evaluación tiene DOS niveles: una heurística ya ejecutada por el equipo, y un protocolo con usuarios reales (escala SUS) formulado y pendiente de ejecutarse.", {
     x: 0.95, y: 6.0, w: 11.4, h: 0.7, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 13, color: SOFT, valign: "middle", lineSpacingMultiple: 1.25,
   });
-  pie(s, 5);
+  pie(s);
 }
 
-// ============ 6. ARQUITECTURA ============
+// ============ 9. ARQUITECTURA FUNCIONAL ============
 {
   const s = pres.addSlide();
   fondo(s);
-  kicker(s, "Cómo se organizó el trabajo");
-  titulo(s, "Cuatro capas, cada una con un único trabajo");
+  kicker(s, "Cómo funciona");
+  titulo(s, "Arquitectura funcional: cuatro capas");
 
   const capas = [
-    ["core/", "Tema visual, accesibilidad (voz + vibración + anuncio), comandos de voz", ACC],
-    ["data/", "Modelos y servicios — cada paquete externo vive envuelto en un único archivo", INFO],
-    ["features/", "Una carpeta por pantalla: la vista dibuja, el controlador decide", OK],
-    ["shared/", "Botones y tarjetas reutilizados en varias pantallas", SOFT],
+    ["CAPA 1", "Entrada multimodal", ["Voz en español peruano", "Gestos (áreas ≥ 44 px)", "Cámara", "URL o archivo"], ACC],
+    ["CAPA 2", "Motor de procesamiento", ["Analizador WCAG 2.2", "Visión por computador (OCR)", "Simplificador semántico"], INFO],
+    ["CAPA 3", "Adaptación al perfil", ["Ceguera total", "Baja visión", "Daltonismo", "Ayuda humana de respaldo"], OK],
+    ["CAPA 4", "Salida accesible", ["Voz sintetizada (0.5× a 3×)", "Alto contraste (15.8:1)", "Línea braille por Bluetooth", "Retroalimentación háptica"], SOFT],
   ];
-  capas.forEach(([t, d, c], i) => {
-    const y = 2.0 + i * 1.12;
-    tarjeta(s, 0.6, y, 12.1, 0.95, { fill: SURF });
-    s.addShape("rect", { x: 0.6, y, w: 0.1, h: 0.95, fill: { color: c }, line: { type: "none" } });
-    s.addText(t, { x: 1.0, y: y + 0.08, w: 2.1, h: 0.8, isTextBox: true, margin: 0, valign: "middle", fontFace: "Consolas", bold: true, fontSize: 18, color: c });
-    s.addText(d, { x: 3.2, y: y + 0.08, w: 9.2, h: 0.8, isTextBox: true, margin: 0, valign: "middle", fontFace: FONT_B, fontSize: 14, color: TXT });
+  capas.forEach(([n, t, items, c], i) => {
+    const x = 0.6 + i * 3.08;
+    s.addShape("roundRect", { x, y: 2.0, w: 2.85, h: 3.95, rectRadius: 0.1, fill: { color: SURF }, line: { color: c, width: 1.75 } });
+    s.addText(n, { x: x + 0.22, y: 2.18, w: 2.4, h: 0.3, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 11, color: c, charSpacing: 2 });
+    s.addText(t, { x: x + 0.22, y: 2.5, w: 2.45, h: 0.75, isTextBox: true, margin: 0, fontFace: FONT_H, bold: true, fontSize: 16, color: TXT, valign: "top" });
+    items.forEach((it, k) => {
+      s.addText(it, { x: x + 0.22, y: 3.4 + k * 0.62, w: 2.45, h: 0.5, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12.5, color: SOFT, valign: "middle" });
+    });
   });
 
-  s.addText("Regla que no se negocia: ningún widget llama a un paquete externo directamente.", {
-    x: 0.6, y: 6.6, w: 12.1, h: 0.5, isTextBox: true, margin: 0, fontFace: FONT_B, italic: true, fontSize: 13, color: SOFT, align: "center",
+  s.addText("El usuario interactúa con la capa 1 y percibe el resultado de la capa 4; las dos intermedias operan de forma invisible para él.", {
+    x: 0.6, y: 6.25, w: 12.1, h: 0.6, isTextBox: true, margin: 0, fontFace: FONT_B, italic: true, fontSize: 13.5, color: SOFT, align: "center",
   });
-  pie(s, 6);
+  pie(s);
 }
 
-// ============ 7. HERRAMIENTAS ============
+// ============ 10. HERRAMIENTAS ============
 {
   const s = pres.addSlide();
   fondo(s);
   kicker(s, "Stack tecnológico");
-  titulo(s, "Herramientas y para qué se usó cada una");
+  titulo(s, "Herramientas y para qué se usa cada una");
 
   const col1 = [
     ["Flutter + Dart", "Framework y lenguaje — una sola base de código para Android e iOS"],
@@ -246,7 +327,7 @@ const pres = nuevaPres();
       s.addText(d, { x, y: y + 0.38, w: 5.8, h: 0.7, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12.5, color: SOFT, lineSpacingMultiple: 1.2 });
     });
   });
-  pie(s, 7);
+  pie(s);
 }
 
 // ============ 8. CÓMO FUNCIONA EL COMANDO DE VOZ ============
@@ -277,7 +358,7 @@ const pres = nuevaPres();
     "VÍA no entrena ni aloja su propio modelo de inteligencia artificial para reconocer voz. Usa el paquete speech_to_text de Flutter, que delega esa tarea al reconocedor de voz que ya trae instalado el sistema operativo del celular (en Android, el servicio de reconocimiento de voz de Google). Para que la app hable, se usa el paquete complementario flutter_tts, que también usa el motor de voz nativo del equipo.",
     { x: 0.95, y: 5.48, w: 11.4, h: 1.15, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12.5, color: SOFT, lineSpacingMultiple: 1.3 }
   );
-  pie(s, 8);
+  pie(s);
 }
 
 // ============ 9. EVALUACIÓN HEURÍSTICA ============
@@ -289,22 +370,22 @@ const pres = nuevaPres();
 
   tarjeta(s, 0.6, 1.95, 3.6, 4.4, { fill: SURF, line: OK });
   s.addText("10 / 10", { x: 0.6, y: 2.3, w: 3.6, h: 1.0, isTextBox: true, margin: 0, align: "center", fontFace: FONT_H, bold: true, fontSize: 44, color: OK });
-  s.addText("heurísticas cumplidas en el recorrido del prototipo", { x: 0.95, y: 3.3, w: 2.9, h: 0.9, isTextBox: true, margin: 0, align: "center", fontFace: FONT_B, fontSize: 13, color: SOFT });
+  s.addText("heurísticas cumplidas en el recorrido del prototipo de alta fidelidad", { x: 0.95, y: 3.3, w: 2.9, h: 0.9, isTextBox: true, margin: 0, align: "center", fontFace: FONT_B, fontSize: 13, color: SOFT });
   s.addText("Ej.: cada acción se confirma por voz + vibración + lector de pantalla a la vez.", { x: 0.95, y: 4.5, w: 2.9, h: 1.6, isTextBox: true, margin: 0, align: "center", fontFace: FONT_B, italic: true, fontSize: 11.5, color: SOFT, lineSpacingMultiple: 1.3 });
 
   tarjeta(s, 4.45, 1.95, 8.25, 4.4, { fill: SURF, line: ACC });
   s.addText("3 hallazgos de mejora, documentados con severidad", { x: 4.8, y: 2.15, w: 7.6, h: 0.4, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 15, color: ACC });
   const hallazgos = [
-    "Comandos no descubribles al inicio — falta un comando \u201cayuda\u201d que los liste (ya corregido)",
+    "Comandos no descubribles al inicio: falta un comando \u201cayuda\u201d que los liste",
     "Silencio durante procesos largos (OCR, descarga web) sin progreso audible intermedio",
-    "Guía de encuadre de cámara mide solo luz, no bordes del documento — limitación documentada",
+    "Guía de encuadre: la luz es fácil de medir, pero detectar los bordes del documento requiere una biblioteca más pesada (trabajo futuro)",
   ];
   hallazgos.forEach((h, i) => {
     const y = 2.75 + i * 1.1;
     s.addShape("ellipse", { x: 4.8, y: y + 0.07, w: 0.18, h: 0.18, fill: { color: ACC }, line: { type: "none" } });
     s.addText(h, { x: 5.15, y: y - 0.05, w: 7.3, h: 1.0, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12.5, color: SOFT, lineSpacingMultiple: 1.25 });
   });
-  pie(s, 9);
+  pie(s);
 }
 
 // ============ 10. PROTOCOLO SUS ============
@@ -329,30 +410,40 @@ const pres = nuevaPres();
   tarjeta(s, 6.65, 2.55, 6.05, 3.9, { fill: SURF, line: INFO });
   s.addText("Escala SUS (Brooke, 1996)", { x: 7.0, y: 2.75, w: 5.4, h: 0.4, isTextBox: true, margin: 0, fontFace: FONT_B, bold: true, fontSize: 15, color: INFO });
   s.addText("10 preguntas, puntuadas de 1 a 5, sobre qué tan usable percibe el participante que es la app.", { x: 7.0, y: 3.2, w: 5.4, h: 0.8, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12.5, color: SOFT, lineSpacingMultiple: 1.3 });
-  s.addText("68", { x: 7.0, y: 4.2, w: 2.2, h: 1.0, isTextBox: true, margin: 0, fontFace: FONT_H, bold: true, fontSize: 44, color: OK });
-  s.addText("puntos sobre 100 — el umbral de \u201cusabilidad aceptable\u201d que se usará como meta", { x: 9.2, y: 4.35, w: 3.2, h: 1.1, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12, color: SOFT, valign: "middle", lineSpacingMultiple: 1.25 });
-  pie(s, 10);
+  s.addText("80", { x: 7.0, y: 4.2, w: 2.2, h: 1.0, isTextBox: true, margin: 0, fontFace: FONT_H, bold: true, fontSize: 44, color: OK });
+  s.addText("puntos sobre 100: la meta del proyecto (el mínimo de usabilidad aceptable es 68)", { x: 9.2, y: 4.35, w: 3.2, h: 1.1, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12, color: SOFT, valign: "middle", lineSpacingMultiple: 1.25 });
+  pie(s);
 }
 
-// ============ 11. CONCLUSIONES ============
+// ============ 13. REFERENCIAS ============
 {
   const s = pres.addSlide();
   fondo(s);
-  kicker(s, "Cierre");
-  titulo(s, "Conclusiones");
+  kicker(s, "Fuentes");
+  titulo(s, "Referencias principales");
 
-  const concl = [
-    ["Primera", "El diseño pasó de maqueta a prototipo navegable, con decisiones de interacción respaldadas en voz, vibración y alto contraste a la vez."],
-    ["Segunda", "El alcance acotado a discapacidad visual permitió profundidad real, respaldada por el marco teórico del curso."],
-    ["Tercera", "La evaluación heurística encontró cumplimiento sólido y tres mejoras honestas — no fue un ejercicio confirmatorio."],
-    ["Cuarta", "El protocolo SUS con usuarios reales es el paso inmediato pendiente, antes del lanzamiento final."],
+  const refs1 = [
+    "Adnin, R., y Das, M. (2024). How blind people use and understand generative AI tools. ACM SIGACCESS ASSETS.",
+    "Bigham, J. P., et al. (2010). VizWiz: Nearly real-time answers to visual questions. ACM UIST.",
+    "Brooke, J. (1996). SUS: A “quick and dirty” usability scale. Taylor & Francis.",
+    "Gurari, D., et al. (2018). VizWiz Grand Challenge: Answering visual questions from blind people. IEEE CVPR.",
+    "INEI. (2018). Perú: Perfil sociodemográfico de la población con discapacidad, 2017.",
+    "Nielsen, J. (1994). Heuristic evaluation. En Usability Inspection Methods. Wiley.",
   ];
-  concl.forEach(([n, t], i) => {
-    const y = 2.0 + i * 1.22;
-    s.addText(n, { x: 0.6, y, w: 2.0, h: 1.0, isTextBox: true, margin: 0, fontFace: FONT_H, bold: true, fontSize: 17, color: ACC });
-    s.addText(t, { x: 2.7, y, w: 9.9, h: 1.0, isTextBox: true, margin: 0, valign: "middle", fontFace: FONT_B, fontSize: 14.5, color: TXT, lineSpacingMultiple: 1.3 });
+  const refs2 = [
+    "Norman, D. A. (2013). The design of everyday things. Basic Books.",
+    "Organización Mundial de la Salud. (2026). Ceguera y discapacidad visual.",
+    "Shneiderman, B. (2000). Universal usability. Communications of the ACM, 43(5).",
+    "Story, M. F., Mueller, J. L., y Mace, R. L. (1998). The universal design file. NC State University.",
+    "WebAIM. (2026). The WebAIM Million: 2026 report on the accessibility of the top 1,000,000 home pages.",
+    "World Wide Web Consortium. (2023). Web Content Accessibility Guidelines (WCAG) 2.2.",
+  ];
+  [refs1, refs2].forEach((col, ci) => {
+    col.forEach((r, i) => {
+      s.addText(r, { x: 0.6 + ci * 6.15, y: 2.0 + i * 0.78, w: 5.85, h: 0.7, isTextBox: true, margin: 0, fontFace: FONT_B, fontSize: 12, color: SOFT, lineSpacingMultiple: 1.15, valign: "top" });
+    });
   });
-  pie(s, 11);
+  pie(s);
 }
 
 // ============ 12. GRACIAS ============

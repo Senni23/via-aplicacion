@@ -106,7 +106,7 @@ class InicioTab extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            'ACCESOS RÁPIDOS',
+            ajustes.modoSimplificado ? '¿QUÉ QUIERES HACER?' : 'ACCESOS RÁPIDOS',
             style: TextStyle(
               color: c.textoSuave,
               fontSize: 12.5,
@@ -118,7 +118,9 @@ class InicioTab extends StatelessWidget {
           TarjetaAccesible(
             emoji: '🌐',
             titulo: 'Abrir una web',
-            descripcion: 'Se reconstruye en modo accesible',
+            descripcion: ajustes.modoSimplificado
+                ? 'Escucha una página de internet'
+                : 'Se reconstruye en modo accesible',
             acento: AcentoTarjeta.accion,
             onTap: onAbrirWeb,
           ),
@@ -126,7 +128,9 @@ class InicioTab extends StatelessWidget {
           TarjetaAccesible(
             emoji: '📷',
             titulo: 'Ojo IA',
-            descripcion: 'Describe lo que apunta la cámara',
+            descripcion: ajustes.modoSimplificado
+                ? 'Lee en voz alta un texto con la cámara'
+                : 'Describe lo que apunta la cámara',
             acento: AcentoTarjeta.info,
             onTap: onOjoIa,
           ),
@@ -134,7 +138,9 @@ class InicioTab extends StatelessWidget {
           TarjetaAccesible(
             emoji: '📄',
             titulo: 'Leer un documento',
-            descripcion: 'Documento de ejemplo mientras llega el lector de archivos',
+            descripcion: ajustes.modoSimplificado
+                ? 'Escucha un texto de ejemplo'
+                : 'Documento de ejemplo mientras llega el lector de archivos',
             onTap: onLeerDocumento,
           ),
           const SizedBox(height: 20),

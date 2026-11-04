@@ -50,6 +50,10 @@ class AjustesAccesibilidad {
   final double velocidadVoz; // 0.5x a 3.0x (RF-07)
   final bool descripcionIA; // Fase 11
   final bool reducirAnimaciones;
+  /// Modo simplificado: menos opciones por pantalla, textos más cortos y
+  /// letra más grande. Pensado para personas con dificultades cognitivas
+  /// leves o poca experiencia tecnológica.
+  final bool modoSimplificado;
 
   const AjustesAccesibilidad({
     required this.perfil,
@@ -58,6 +62,7 @@ class AjustesAccesibilidad {
     required this.velocidadVoz,
     required this.descripcionIA,
     required this.reducirAnimaciones,
+    required this.modoSimplificado,
   });
 
   factory AjustesAccesibilidad.porDefecto() => const AjustesAccesibilidad(
@@ -67,6 +72,7 @@ class AjustesAccesibilidad {
         velocidadVoz: 1.0,
         descripcionIA: true,
         reducirAnimaciones: false,
+        modoSimplificado: false,
       );
 
   /// Valores iniciales sugeridos al elegir un perfil en el onboarding.
@@ -95,6 +101,7 @@ class AjustesAccesibilidad {
     double? velocidadVoz,
     bool? descripcionIA,
     bool? reducirAnimaciones,
+    bool? modoSimplificado,
   }) {
     return AjustesAccesibilidad(
       perfil: perfil ?? this.perfil,
@@ -103,6 +110,7 @@ class AjustesAccesibilidad {
       velocidadVoz: velocidadVoz ?? this.velocidadVoz,
       descripcionIA: descripcionIA ?? this.descripcionIA,
       reducirAnimaciones: reducirAnimaciones ?? this.reducirAnimaciones,
+      modoSimplificado: modoSimplificado ?? this.modoSimplificado,
     );
   }
 
@@ -113,6 +121,7 @@ class AjustesAccesibilidad {
         'velocidadVoz': velocidadVoz,
         'descripcionIA': descripcionIA,
         'reducirAnimaciones': reducirAnimaciones,
+        'modoSimplificado': modoSimplificado,
       };
 
   factory AjustesAccesibilidad.desdeJson(Map<String, dynamic> json) {
@@ -125,6 +134,7 @@ class AjustesAccesibilidad {
       velocidadVoz: (json['velocidadVoz'] as num?)?.toDouble(),
       descripcionIA: json['descripcionIA'] as bool?,
       reducirAnimaciones: json['reducirAnimaciones'] as bool?,
+      modoSimplificado: json['modoSimplificado'] as bool?,
     );
   }
 

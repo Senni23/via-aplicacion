@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'core/state/perfil_provider.dart';
@@ -37,7 +39,11 @@ class ViaApp extends StatelessWidget {
               // otro.
               final mediaQuery = MediaQuery.of(context);
               final factorSistema = mediaQuery.textScaler.scale(100) / 100;
-              final escalaCombinada = factorSistema * provider.ajustes.escalaTexto;
+              // El modo simplificado garantiza una letra de al menos 130 %.
+              final escalaUsuario = provider.ajustes.modoSimplificado
+                  ? math.max(provider.ajustes.escalaTexto, 1.3)
+                  : provider.ajustes.escalaTexto;
+              final escalaCombinada = factorSistema * escalaUsuario;
               return MediaQuery(
                 data: mediaQuery.copyWith(
                   textScaler: TextScaler.linear(escalaCombinada),
